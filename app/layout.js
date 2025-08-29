@@ -1,5 +1,17 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "@fontsource/dosis";
+ import { Dosis, Inter } from "next/font/google";
+
+ const dosis = Dosis({
+   subsets: ["latin"],
+   variable: "--font-dosis", // export as CSS variable
+ });
+
+ const inter = Inter({
+   subsets: ["latin"],
+   variable: "--font-inter",
+ });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +30,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${dosis.variable} ${inter.variable}`}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
