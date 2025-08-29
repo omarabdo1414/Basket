@@ -5,12 +5,53 @@
   --foreground: #171717;
 }
 
+@theme {
+  --breakpoint-xs: 20rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+
+/* Starting Login and Register */
+
+/* Header Styles */
+
+.security-msg::after {
+  content: "";
+  position: relative;
+  width: 2px;
+  height: 80%;
+  top: -5px;
+  background: #99a1af;
+  margin-top: 8px;
+}
+
+@layer {
+  .login-form {
+    @apply text-[blue] bg-[lightgray] text-center m-auto p-5 w-[50%] rounded-lg;
+  }
+
+  .input-field {
+    @apply 
+    w-full 
+    rounded-[6px] border
+    border-gray-300 
+    text-gray-900
+    px-3 py-2 text-sm focus:border-[#35AFA0] focus:outline-none focus:ring-1 focus:ring-[#35AFA0]
+    placeholder:text-gray-400
+    ;
+  }
+}
+
+
+
+/* Ending Login and Register */
 
 @media (prefers-color-scheme: dark) {
   :root {
