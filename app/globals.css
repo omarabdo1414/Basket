@@ -1,14 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --base-color: #35AFA0;
 }
 
-@theme {
-  --breakpoint-xs: 20rem;
-  --breakpoint-2xl: 100rem;
-  --breakpoint-3xl: 120rem;
+/* second part of header */
+.head-2{
+  @apply container px-[150px] py-[6px] mx-auto w-full text-[12px] flex justify-between items-center max-xl:px-[50px] max-lg:px-0 max-md:block max-sm:px-[20px];
+}
+/* End second part of header */
+
+/* third part of header */
+.head-3{
+  @apply container px-[150px] py-[20px] mx-auto flex items-center justify-between max-xl:px-[50px] max-lg:px-0 max-md:container max-md:px-[50px];
+}
+.search-input{
+  @apply  w-[37rem] bg-[#F3F4F7] placeholder:text-[0.8rem] text-gray-500 px-[28px] pr-[40px] py-[14px] rounded-[6px] max-lg:w-[27rem] max-md:hidden;
+}
+.search-input-2{
+  @apply bg-[#F3F4F7] w-full mx-[50px] placeholder:text-[0.8rem] text-gray-500 px-[28px] pr-[40px] py-[14px] rounded-[6px] hidden max-md:block;
+}
+.badge{
+  @apply bg-[#EA2B0F] absolute text-white rounded-[50%] text-[9px] px-[4px] py-[0.5px];
+}
+/* End third part of header */
+
+/* fourth part of header */
+.head-menu{
+  @apply container px-[150px] mx-auto flex items-center justify-between mb-5 max-xl:px-[50px] max-lg:px-0 max-lg:gap-2 max-md:gap-10 max-md:px-[50px] max-md:py-[20px];
+}
+.category-btn{
+  @apply bg-[var(--base-color)] flex gap-4 px-[26px] py-[12px] rounded-4xl max-lg:px-[15px] max-md:px-[25px];
+}
+.category-btn-txt{
+  @apply uppercase text-white mr-[20px] font-medium text-[15px] text-nowrap  max-lg:mr-[10px] max-md:mr-[2px]
+}
+.total-product{
+  @apply font-medium uppercase text-[0.7rem] bg-[#EDEEF5] px-[10px] py-[0.5px] rounded-3xl border-white border-2 absolute top-[38px] left-[20%] max-md:left-[15%];
 }
 
 @theme inline {
@@ -16,6 +44,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
 }
 
 /* Starting Login and Register */
@@ -62,4 +91,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.jersey{
+  font-family: "jersey 10" ;
 }

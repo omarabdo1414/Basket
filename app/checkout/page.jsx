@@ -1,19 +1,8 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import { Input } from "postcss";
-
-// Components
-import Header from "../components/header";
 
 export default function Register() {
     return (
         <>
-            <div className="warn-msg">
-                <p className="text-center text-sm text-white py-1 bg-[#35AFA0]">Due to current circumstances, there may be slight delays in order processing</p>
-            </div>
-            <Header />
-
             <div className="lg:flex xs:flex-col xs:p-20 lg:flex-row items-center justify-evenly mt-15 mb-15 py-10 xs:h-auto lg:h-[800px] gap-10 lg:gap-0">
                 <div className="payment-info lg:border-r-2 lg:pr-10 lg:border-[#DEDEDE] mt-10">
                     <form action="">
