@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 const jersey = Jersey_10({
   subsets: ["latin"],
   variable: "--font-jersey",
+  weight: "400",
 });
 
 const inter = Inter({
