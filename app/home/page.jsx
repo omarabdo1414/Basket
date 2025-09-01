@@ -1,36 +1,43 @@
 "use client";
 
-import Image1 from "../../assets/baverages-1.jpg.png";
-import Image2 from "../../assets/bacola-banner-05.jpg.png";
-import Image3 from "../../assets/bacola-banner-06.jpg.png";
-import Image4 from "../../assets/bacola-banner-10.jpg.png";
-import Image5 from "../../assets/category-banner-2.jpg.png";
-import Image6 from "../../assets/category-banner-1.jpg.png";
-import Image7 from "../../assets/banner-box2.jpg.png";
-import Image8 from "../../assets/slider-image-8.jpg.png";
-import Image9 from "../../assets/sidebar-banner.gif.png";
-import Image10 from "../../assets/home-banner-15.jpg.png";
-import Image11 from "../../assets/home-banner-16.jpg.png";
+import Image1 from "../../public/assets/baverages-1.jpg.png";
+import Image2 from "../../public/assets/bacola-banner-05.jpg.png";
+import Image3 from "../../public/assets/bacola-banner-06.jpg.png";
+import Image4 from "../../public/assets/bacola-banner-10.jpg.png";
+import Image5 from "../../public/assets/category-banner-2.jpg.png";
+import Image6 from "../../public/assets/category-banner-1.jpg.png";
+import Image7 from "../../public/assets/banner-box2.jpg.png";
+import Image8 from "../../public/assets/slider-image-8.jpg.png";
+import Image9 from "../../public/assets/sidebar-banner.gif.png";
+import Image10 from "../../public/assets/home-banner-15.jpg.png";
+import Image11 from "../../public/assets/home-banner-16.jpg.png";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { useRef } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
 export default function Home() {
   const sliderRef = useRef(null);
 
   const scrollLeft = () => {
     if (sliderRef.current) {
       const cardWidth = sliderRef.current.firstChild.offsetWidth;
-      sliderRef.current.scrollBy({ left: -cardWidth * 5, behavior: "smooth" });
+      sliderRef.current.scrollBy({ left: -cardWidth * 2, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (sliderRef.current) {
       const cardWidth = sliderRef.current.firstChild.offsetWidth;
-      sliderRef.current.scrollBy({ left: cardWidth * 5, behavior: "smooth" });
+      sliderRef.current.scrollBy({ left: cardWidth * 2, behavior: "smooth" });
     }
   };
 
@@ -176,26 +183,37 @@ export default function Home() {
       rating: 5,
     },
   ];
+  const categories = [
+    { id: 1, name: "Beverages", count: 1, img: Image1 },
+    { id: 2, name: "Snacks", count: 2, img: Image1 },
+    { id: 3, name: "Dairy", count: 3, img: Image1 },
+    { id: 4, name: "Fruits", count: 4, img: Image1 },
+    { id: 5, name: "Vegetables", count: 5, img: Image1 },
+    { id: 6, name: "Vegetables", count: 6, img: Image1 },
+    { id: 7, name: "Vegetables", count: 77, img: Image1 },
+    { id: 8, name: "Vegetables", count: 88, img: Image1 },
+    { id: 9, name: "Vegetables", count: 99, img: Image1 },
+  ];
   return (
     <>
       {/* images section */}
       <section className=" mx-auto    lg:px-16 xl:px-40  vh-100">
-        <div className="grid grid-cols-1  place-items-center md:grid-cols-1 lg:grid-cols-3">
+        <div className="grid grid-cols-1  place-items-center md:grid-cols-1 lg:grid-cols-3 ">
           <div className="relative  col-span-1 lg:col-span-2 w-full h-full">
             <Image
               src={Image8}
               alt="juice product "
               className=" rounded-lg cont w-full h-full"
             />
-            <div className="home-first absolute left-20 top-20 space-y-2">
+            <div className="home-first absolute left-10 top-5   lg:left-20 md:top-20 space-y-2">
               <div>
                 <p className=" text-[#202435] text-sm mb-3">
                   Exclusive Offer{" "}
-                  <span className="text-sm text-[#038E42] bg-gradient-to-r from-[#9edbb9] from-[20%] to-white to-[95%] font-semibold rounded-2xl px-2 py-1">
+                  <span className="text-sm text-[#038E42] bg-gradient-to-r from-[#9edbb9] from-[20%] to-white to-[95%] font-semibold rounded-2xl lg:px-2 py-1">
                     -20% OFF
                   </span>{" "}
                 </p>
-                <h2 className="text-[#202435] font-bold text-5xl mb-1 ">
+                <h2 className="text-[#202435] font-bold text-md md:text-5xl mb-1 ">
                   Feed your family <br /> the best{" "}
                 </h2>
               </div>
@@ -218,7 +236,7 @@ export default function Home() {
             </div>{" "}
           </div>
 
-          <div className="col-span-1 w-full h-full place-items-center ">
+          <div className="col-span-1 hidden lg:block place-items-end  w-full h-full  ">
             {" "}
             <Image
               src={Image9}
@@ -227,14 +245,14 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 place-items-center bg-red-600 mt-5">
-          <div className="relative w-full h-full ">
+        <div className="grid grid-cols-1 md:gap-4 px-2 lg:px-0  place-content-center place-items-center  md:grid-cols-2   mt-5">
+          <div className="relative w-full place-items-stretch place-content-stretch  mb-2 md:mb-0 h-full ">
             <Image
               src={Image10}
               alt="juice product"
-              className="col-span-1 rounded-lg"
+              className="col-span-1 rounded-lg w-full "
             />
-            <div className="home-first absolute  right-20 top-14 space-y-2">
+            <div className="home-first absolute right-2 top-7 md:top-7 md:right-4 lg:right-20 lg:top-14 space-y-2">
               <div>
                 <p className=" text-[#202435] ">Everything is so fresh </p>
                 <h3 className="text-[#3E445A] font-semibold text-3xl ">
@@ -252,16 +270,16 @@ export default function Home() {
               </Link>
             </div>{" "}
           </div>
-          <div className="relative w-full h-full ">
+          <div className="relative  w-full place-items-stretch h-full ">
             <Image
               src={Image11}
               alt="happy product"
-              className="col-span-1 rounded-lg"
+              className="col-span-1 rounded-lg w-full"
             />{" "}
-            <div className="home-first absolute right-20 top-14 space-y-2">
+            <div className="home-first absolute right-4 top-7 md:top-7 md:right-1 lg:right-20 lg:top-14 space-y-2">
               <div>
                 <p className=" text-[#202435] ">Big discount on </p>
-                <h3 className="text-[#3E445A] font-semibold text-3xl ">
+                <h3 className="text-[#3E445A] font-semibold text-2xl md:text-3xl ">
                   organic legumes{" "}
                 </h3>
               </div>
@@ -279,20 +297,20 @@ export default function Home() {
         </div>
       </section>
       {/* Slider of best seller and  Banner section  */}
-      <section className="container  mx-auto px-40 py-2  ">
+      <section className="container  mx-auto px-2 lg:px-40 py-2  ">
         <div className="home-page flex justify-between mb-5">
           <div>
-            <h2 className="uppercase text-xl text-[#202435] font-semibold">
+            <h2 className="uppercase text-md md:text-xl text-[#202435] font-semibold">
               Best Sellers
             </h2>
-            <p className="text-[#9B9BB4] text-sm">
+            <p className="text-[#9B9BB4] text-xs md:text-sm">
               Do not miss the current offers until the end of March.{" "}
             </p>
           </div>
           <div>
             <Link
               href="/shop"
-              className="text-[#D9D9E9] flex justify-center items-center rounded-4xl border-2 border-[#D9D9E9]  mt-2 py-1 text-sm px-4"
+              className="text-[#D9D9E9] flex justify-center items-center rounded-4xl border-2 border-[#D9D9E9]  mt-2 py-1 text-xs lg:text-sm px-4"
             >
               View All <ArrowRightIcon className="w-4 h-4" />
             </Link>
@@ -302,13 +320,13 @@ export default function Home() {
           {/* Buttons of slider*/}
           <button
             onClick={scrollLeft}
-            className="absolute -left-5 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full z-10"
+            className="absolute right-[350px] md:-left-5 top-1/2 -translate-y-1/2 bg-white shadow-md p-1 rounded-full z-10"
           >
             <ChevronLeftIcon className="w-6 h-6" />
           </button>
           <button
             onClick={scrollRight}
-            className="absolute -right-5 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full z-10"
+            className="absolute left-[350px] md:-right-5 top-1/2 -translate-y-1/2 bg-white shadow-md p-1 rounded-full z-10"
           >
             <ChevronRightIcon className="w-6 h-6" />
           </button>
@@ -321,9 +339,13 @@ export default function Home() {
             {products.map((product) => (
               <div
                 key={product.id}
-                className="relative min-w-[20%] max-w-[20%] px-6 space-y-1 border-r-2 border-[#EDEEF5] flex flex-col justify-center py-4 snap-start"
+                className="relative min-w-[50%] max-w-[50%] lg:min-w-[20%] lg:max-w-[20%] px-6 space-y-1 border-r-2 border-[#EDEEF5] flex flex-col justify-center py-4 snap-start"
               >
-                <Image src={product.img} alt={product.name} />
+                <Image
+                  src={product.img}
+                  alt={product.name}
+                  className="w-full h-full"
+                />
                 <h4 className="text-sm font-semibold">{product.name}</h4>
                 <p className="text-[#00B853] uppercase font-semibold text-sm">
                   {product.stock} In stock
@@ -354,48 +376,48 @@ export default function Home() {
         </div>
 
         {/* banner */}
-        <div className="bg-[#F8EFEA] rounded-lg flex gap-3 justify-around items-center mt-4">
-          <p className="text-[#00B853] text-lg">
-            <span className=" font-semibold"> 100% Secure delivery </span>
+        <div className="bg-[#F8EFEA] rounded-lg flex  lg:gap-3 justify-around items-center mt-4 md:px-2">
+          <p className="text-[#00B853] text-xs md:text-sm w-[50%] md:w-[30%]">
+            <span className=" font-semibold"> 100% Secure delivery </span>{" "}
             without contacting the courier
           </p>
-          <Image src={Image7} alt="group" />
+          <Image src={Image7} alt="group" className="w-[25%] h-[70px]" />
           <Link
             href="/shop"
-            className="bg-[#00B853] rounded-4xl text-white mt-2 py-2 px-4"
+            className="bg-[#00B853] rounded-4xl text-white text-sm mt-2 py-2 px-2 lg:px-4"
           >
             Shop Now
           </Link>
         </div>
-      </section>{" "}
+      </section>
       {/* Fruit & vegtables - red banner section  */}
-      <section className="container mx-auto px-40 py-2  ">
+      <section className="container mx-auto px-2 lg:px-40 py-2  ">
         <div className="home-page flex justify-between">
           <div>
-            <h2 className="uppercase text-xl text-[#202435] font-semibold">
+            <h2 className="uppercase text-md md:text-xl text-[#202435] font-semibold">
               FRUIT & VEGETABLES{" "}
             </h2>
-            <p className="text-[#9B9BB4] text-sm">
+            <p className="text-[#9B9BB4] text-xs  md:text-sm">
               The freshest green grocer products are waiting for you{" "}
             </p>
           </div>
           <div>
             <Link
               href="/shop"
-              className="text-[#D9D9E9] flex justify-center items-center rounded-4xl border-2 border-[#D9D9E9]  mt-2 py-1 text-sm px-4"
+              className="text-[#D9D9E9] flex justify-center items-center rounded-4xl border-2 border-[#D9D9E9]  mt-2 py-1 text-xs md:text-sm px-1 md:px-4"
             >
               View All <ArrowRightIcon className="w-4 h-4" />
             </Link>
           </div>
         </div>
-        <div className="grid  grid-cols-6 border-2 border-[#EDEEF5] mt-10 rounded-lg">
-          <div className="col-span-2 relative">
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 border-1 border-[#EDEEF5] mt-2 md:mt-10 rounded-lg">
+          <div className="col-span-1 md:col-span-2 relative ">
             <Image
               src={Image6}
               alt="grocery"
-              className="w-full h-1/2  rounded-tl-lg"
+              className="w-full   lg:h-1/2  rounded-tl-lg"
             />
-            <div className="home-page absolute left-7 top-10 space-y-2">
+            <div className="home-page absolute top-28 left-7 md:top-10 space-y-2">
               <div>
                 <p className=" text-[#202435] font-semibold">
                   Weekly Discounts on
@@ -412,7 +434,7 @@ export default function Home() {
                 View All
               </Link>
             </div>{" "}
-            <ul className="grid grid-cols-2 home-page p-5 space-y-1 mb-20">
+            <ul className=" grid grid-cols-1 lg:grid-cols-2 home-page px-5 py-1 md:p-5 space-y-1 md:mb-20">
               <li className="text-[#3E445A]">Beverages</li>
               <li className="text-[#3E445A]">Breads & Bakery</li>
               <li className="text-[#3E445A]">Breads & Bakery</li>
@@ -423,277 +445,52 @@ export default function Home() {
               <li className="text-[#3E445A]">Breads & Bakery</li>
               <li className="text-[#3E445A]">Breads & Bakery</li>
             </ul>
-            <p className="flex pl-5 text-[#233A95] items-center mb-4 font-semibold">
+            <p className="flex pl-5 text-[#233A95] items-center lg:mb-4 font-semibold">
               View All <ArrowRightIcon className="w-4 h-4" />
             </p>
           </div>
-          <div className="h-page border-l-2 border-[#EDEEF5]">
-            <div className="relative px-4 border-b-2  border-[#EDEEF5] flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                <span>17 </span>In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
+          <div className="h-page col-span-2 lg:col-span-4 grid grid-cols-2 lg:grid-cols-4">
+            {products.slice(0, 8).map((product) => (
+              <div
+                key={product.id}
+                className="relative px-4 border-1 border-[#EDEEF5]  flex flex-col justify-center pb-2 lg:pb-0 "
+              >
+                <Image src={Image1} alt="anything" />
+                <h4 className="vegetables-section text-sm font-semibold">
+                  Chobani Complete Vanilla Greek Yogurt
+                </h4>
+                <p className="text-[#00B853] uppercase font-semibold text-sm">
+                  <span>17 </span>In stock
+                </p>
+                <div className="flex items-center">
+                  {" "}
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <div className="text-[#71778E] font-semibold ml-2 text-sm">
+                    <p>review</p>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-              <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
-                Add to cart
-              </button>
-            </div>
-            <div className="relative px-4  flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                <span>17 </span>In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
+                <div>
+                  <span className="text-[#C2C2D3] line-through font-semibold">
+                    $8.29
+                  </span>{" "}
+                  <span className="text-[#D51243]  font-semibold">$3.29</span>
                 </div>
+                <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
+                  60%
+                </p>
+                <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
+                  Add to cart
+                </button>
               </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-              <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
-                Add to cart
-              </button>
-            </div>
-          </div>
-          <div className="h-page border-l-2 border-[#EDEEF5]">
-            <div className="relative px-4 border-b-2  border-[#EDEEF5] flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                <span>17 </span>In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-              <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
-                Add to cart
-              </button>
-            </div>
-            <div className="relative px-4  flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                <span>17 </span>In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-              <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
-                Add to cart
-              </button>
-            </div>
-          </div>
-          <div className="h-page border-l-2 border-[#EDEEF5]">
-            <div className="relative px-4 border-b-2  border-[#EDEEF5] flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                <span>17 </span>In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-              <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
-                Add to cart
-              </button>
-            </div>
-            <div className="relative px-4  flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                <span>17 </span>In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-              <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
-                Add to cart
-              </button>
-            </div>
-          </div>
-          <div className="h-page border-l-2 border-[#EDEEF5]">
-            <div className="relative px-4 border-b-2  border-[#EDEEF5] flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                <span>17 </span>In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-              <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
-                Add to cart
-              </button>
-            </div>
-            <div className="relative px-4  flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                <span>17 </span>In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-              <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
-                Add to cart
-              </button>
-            </div>
+            ))}
           </div>
         </div>
         {/* red banner */}
-        <div className="bg-[#FFEEF2] rounded-lg flex gap-3 justify-center py-4 items-center mt-4">
+        <div className="bg-[#FFEEF2] rounded-lg flex flex-col md:flex-row gap-3 justify-center py-4 items-center mt-4">
           <p className="text-[#ED174A] ">
             Super discount for your{" "}
             <span className="underline font-semibold">first purchase.</span>
@@ -707,31 +504,31 @@ export default function Home() {
         </div>
       </section>
       {/* Breakfast & Dairy */}
-      <section className="container mx-auto px-40 py-2  ">
+      <section className="container mx-auto px-2 lg:px-40 py-2  ">
         <div className="home-page flex justify-between">
           <div>
-            <h2 className="uppercase text-xl text-[#202435] font-semibold">
+            <h2 className="uppercase text-md md:text-xl text-[#202435] font-semibold">
               Breakfast & Dairy
             </h2>
-            <p className="text-[#9B9BB4]">
+            <p className="text-[#9B9BB4] text-xs md:text-sm">
               Do not miss the current offers until the end of month.
             </p>
           </div>
           <div>
             <Link
               href="/shop"
-              className="text-[#D9D9E9] flex justify-center items-center rounded-4xl border-2 border-[#D9D9E9]  mt-2 py-1 text-sm px-4"
+              className="text-[#D9D9E9] flex justify-center items-center rounded-4xl border-2 border-[#D9D9E9]  md:mt-2 py-1 text-sm px-1 md:px-4"
             >
               View All <ArrowRightIcon className="w-4 h-4" />
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-6 border-2 border-[#EDEEF5] mt-10 rounded-lg">
-          <div className="col-span-2 relative">
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 border-2 border-[#EDEEF5] mt-2 md:mt-10 rounded-lg">
+          <div className="col-span-1 md:col-span-2 relative border-1 border-[#EDEEF5]">
             <Image
               src={Image5}
               alt="grocery"
-              className="w-full h-1/2  rounded-tl-lg"
+              className="w-full lg:h-1/2  rounded-tl-lg"
             />
             <div className="home-page absolute left-7 top-10 space-y-2">
               <div>
@@ -750,7 +547,7 @@ export default function Home() {
                 View All
               </Link>
             </div>{" "}
-            <ul className="grid grid-cols-2 home-page p-5 space-y-1 mb-20">
+            <ul className="grid lg:grid-cols-2 home-page p-5 space-y-1 md:mb-20">
               <li className="text-[#3E445A]">Beverages</li>
               <li className="text-[#3E445A]">Breads & Bakery</li>
               <li className="text-[#3E445A]">Breads & Bakery</li>
@@ -761,257 +558,50 @@ export default function Home() {
               <li className="text-[#3E445A]">Breads & Bakery</li>
               <li className="text-[#3E445A]">Breads & Bakery</li>
             </ul>
-            <p className="flex pl-5 text-[#233A95] items-center mb-4 font-semibold">
+            <p className="flex pl-5 text-[#233A95] items-center lg:mb-4 font-semibold">
               View All <ArrowRightIcon className="w-4 h-4" />
             </p>
           </div>
-          <div className="h-page border-l-2 border-[#EDEEF5]">
-            <div className="relative px-4 border-b-2  border-[#EDEEF5] flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
+          <div className="h-page col-span-2 lg:col-span-4 grid grid-cols-2 lg:grid-cols-4">
+            {products.slice(0, 8).map((product) => (
+              <div className="relative px-4 border-1  border-[#EDEEF5] flex flex-col justify-center   ">
+                <Image src={Image1} alt="anything" />
+                <h4 className="vegetables-section text-sm font-semibold">
+                  Chobani Complete Vanilla Greek Yogurt
+                </h4>
+                <p className="text-[#00B853] uppercase font-semibold text-sm">
+                  In stock
+                </p>
+                <div className="flex items-center">
+                  {" "}
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <StarIcon className="size-4 text-yellow-500" />
+                  <div className="text-[#71778E] font-semibold ml-2 text-sm">
+                    <p>review</p>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-            </div>
-            <div className="relative px-4 flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
+                <div>
+                  <span className="text-[#C2C2D3] line-through font-semibold">
+                    $8.29
+                  </span>{" "}
+                  <span className="text-[#D51243]  font-semibold">$3.29</span>
                 </div>
+                <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
+                  60%
+                </p>
               </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-            </div>
-          </div>
-          <div className="h-page border-l-2 border-[#EDEEF5]">
-            <div className="relative px-4 border-b-2  border-[#EDEEF5] flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-            </div>
-            <div className="relative px-4 flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-            </div>
-          </div>
-          <div className="h-page border-l-2 border-[#EDEEF5]">
-            <div className="relative px-4 border-b-2  border-[#EDEEF5] flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-            </div>
-            <div className="relative px-4 flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-            </div>
-          </div>
-          <div className="h-page border-l-2 border-[#EDEEF5]">
-            <div className="relative px-4 border-b-2  border-[#EDEEF5] flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-            </div>
-            <div className="relative px-4  flex flex-col justify-center h-1/2  ">
-              <Image src={Image1} alt="anything" />
-              <h4 className="vegetables-section text-sm font-semibold">
-                Chobani Complete Vanilla Greek Yogurt
-              </h4>
-              <p className="text-[#00B853] uppercase font-semibold text-sm">
-                In stock
-              </p>
-              <div className="flex items-center">
-                {" "}
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <StarIcon className="size-4 text-yellow-500" />
-                <div className="text-[#71778E] font-semibold ml-2 text-sm">
-                  <p>review</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#C2C2D3] line-through font-semibold">
-                  $8.29
-                </span>{" "}
-                <span className="text-[#D51243]  font-semibold">$3.29</span>
-              </div>
-              <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                60%
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
       {/* weekend Discount section */}
-      <section className="container mx-auto px-40 py-2 grid grid-cols-3 gap-14 ">
+      <section className="container mx-auto lg:px-40 py-2 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-14 ">
         <div className="relative flex justify-center items-center">
           <Image src={Image2} alt="eggs" className="rounded-md w-full" />
-          <div className="home-page absolute left-5 top-10 space-y-2">
+          <div className="home-page absolute left-12 md:left-16 top-11 md:top-28 lg:left-5 lg:top-10 space-y-2">
             <p className="discount text-[#00B853] font-semibold">
               WEEKEND DISCOUNT 40%
             </p>
@@ -1029,7 +619,7 @@ export default function Home() {
         </div>
         <div className="relative flex justify-center items-center">
           <Image src={Image4} alt="eggs" className="rounded-md w-full" />
-          <div className="home-page absolute left-5 top-10 space-y-2">
+          <div className="home-page absolute left-12 md:left-16 top-11 md:top-28 lg:left-5 lg:top-10 space-y-2">
             <p className="discount text-[#00B853] font-semibold">
               WEEKEND DISCOUNT 40%
             </p>
@@ -1047,7 +637,7 @@ export default function Home() {
         </div>
         <div className="relative flex justify-center items-center">
           <Image src={Image3} alt="eggs" className="rounded-md w-full" />
-          <div className="home-page absolute left-5 top-10 space-y-2">
+          <div className="home-page absolute left-12 md:left-16 top-11 md:top-28 lg:left-5 lg:top-10 space-y-2">
             <p className="discount text-[#00B853] font-semibold">
               WEEKEND DISCOUNT 40%
             </p>
@@ -1065,77 +655,27 @@ export default function Home() {
         </div>
       </section>
       {/* Categories Section */}
-      <section className="container mx-auto px-40 py-2  ">
-        <div className="border-1 border-[#EDEEF5] grid grid-cols-5 rounded-lg">
+      <section className="container mx-auto px-2 lg:px-40 py-2  ">
+        <div className=" border-[#EDEEF5] grid grid-cols-2 md:grid-cols-5 rounded-lg">
           {" "}
-          <div className="flex flex-col justify-center items-center pr-3">
+          <div className="col-span-2 md:col-span-1 border-1 border-[#EDEEF5] flex  flex-col justify-center items-center pr-3 ">
             <Image src={Image1} alt="anything" />
             <p>Beverages</p>
             <p>11 items</p>
           </div>
-          <div className="border-l-1 border-[#EDEEF5]">
-            <div className=" flex   items-center border-b-1  border-[#EDEEF5] pr-3">
-              <Image src={Image1} alt="anything" />
-              <div className="">
-                <p>Beverages</p>
-                <p>11 items</p>
+          <div className="col-span-2 md:col-span-4 grid grid-cols-2 md:grid-cols-4">
+            {categories.slice(1).map((cat) => (
+              <div
+                key={cat.id}
+                className=" flex   items-center border-1  border-[#EDEEF5] pr-3"
+              >
+                <Image src={Image1} alt="anything" />
+                <div className="">
+                  <p>Beverages</p>
+                  <p>{cat.count} items</p>
+                </div>
               </div>
-            </div>
-            <div className=" flex  justify-center items-center pr-3">
-              <Image src={Image1} alt="anything" />
-              <div>
-                <p>Beverages</p>
-                <p>11 items</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-l-1 border-[#EDEEF5]">
-            <div className=" flex  justify-center items-center  border-b-1  border-[#EDEEF5] pr-3">
-              <Image src={Image1} alt="anything" />
-              <div>
-                <p>Beverages</p>
-                <p>11 items</p>
-              </div>
-            </div>
-            <div className=" flex  justify-center items-center pr-3">
-              <Image src={Image1} alt="anything" />
-              <div>
-                <p>Beverages</p>
-                <p>11 items</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-l-1 border-[#EDEEF5]">
-            <div className=" flex  justify-center items-center  border-b-1  border-[#EDEEF5] pr-3">
-              <Image src={Image1} alt="anything" />
-              <div>
-                <p>Beverages</p>
-                <p>11 items</p>
-              </div>
-            </div>
-            <div className=" flex  justify-center items-center pr-3">
-              <Image src={Image1} alt="anything" />
-              <div>
-                <p>Beverages</p>
-                <p>11 items</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-l-1 border-[#EDEEF5]">
-            <div className=" flex  justify-center items-center h-1/2  border-b-1  border-[#EDEEF5] pr-3">
-              <Image src={Image1} alt="anything" />
-              <div>
-                <p>Beverages</p>
-                <p>11 items</p>
-              </div>
-            </div>
-            <div className=" flex  justify-center items-center h-1/2 pr-3">
-              <Image src={Image1} alt="anything" />
-              <div>
-                <p>Beverages</p>
-                <p>11 items</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
