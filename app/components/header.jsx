@@ -98,13 +98,13 @@ export default function Header() {
                     </div>
                     <ul
                         className={`uppercase
-             ${dosis.className} 
-             font-medium flex gap-7 
-             mx-10px text-[15px] 
-             items-center max-lg:gap-5
-              max-md:flex-wrap max-md:hidden`}>
+                                    ${dosis.className} 
+                                    font-medium flex gap-7 
+                                    mx-10px text-[15px] 
+                                    items-center max-lg:gap-5
+                                    max-md:flex-wrap max-md:hidden`}>
                         <li className='flex gap-3 items-center bg-[#F0FAFF] px-[15px] py-[6px] rounded-[30px] '>
-                            <span className="text-[var(--base-color)]"> <a href="#">home</a> </span>
+                            <span className="text-[var(--base-color)]"> <a href="/">home</a> </span>
                             {/* <Image src="/assets/dropArrowHome.svg" alt='drop arrow' width={10} height={10}/> */}
                         </li>
                         <li className='menu-items'>
