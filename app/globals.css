@@ -38,6 +38,21 @@
 .total-product{
   @apply font-medium uppercase text-[0.7rem] bg-[#EDEEF5] px-[10px] py-[0.5px] rounded-3xl border-white border-2 absolute top-[38px] left-[20%] max-md:left-[15%];
 }
+.menu-items{
+  @apply transition-all duration-[0.1s] ease-in hover:text-[var(--base-color)];
+}
+.menu-lines{
+  @apply block h-0.5 bg-black rounded transition-all duration-300;
+}
+.menu-items-icons{
+  @apply flex gap-1 items-center;
+}
+/* End fourth part of header */
+@theme {
+  --breakpoint-xs: 20rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -79,6 +94,17 @@
 }
 
 /* Ending Login and Register */
+
+/* Starting Checkout Styles */
+
+.delivery-input {
+  @apply absolute left-3 text-gray-500 bg-white px-1 transition-all duration-200
+                                        peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400
+                                        peer-focus:-top-3 peer-focus:text-sm
+                                        -top-3 text-sm
+}
+
+/* Ending Checkout Styles */
 
 @media (prefers-color-scheme: dark) {
   :root {

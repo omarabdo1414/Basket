@@ -6,16 +6,13 @@ import Image from "next/image";
 const Login = () => {
     return (
         <>
-            <div className="warn-msg">
-                <p className="text-center text-sm text-white py-1 bg-[#35AFA0]">Due to current circumstances, there may be slight delays in order processing</p>
-            </div>
             <div className="flex min-h-screen items-center justify-evenly bg-gray-50 flex-wrap">
                 <div className="lg:block sm:hidden xs:hidden">
                     <div className="">
                         <div className="mb-6 flex flex items-center">
                             <div className="relative flex items-center justify-center">
                                 <Image
-                                    src="/images/line.svg"
+                                    src="/assets/line.svg"
                                     alt="Line with Basket Logo"
                                     width={400}
                                     height={400}
@@ -23,7 +20,7 @@ const Login = () => {
                                     style={{ zIndex: 1 }}
                                 />
                                 <Image
-                                    src="/images/logo.svg"
+                                    src="/assets/logo_.svg"
                                     alt="Basket Logo"
                                     width={400}
                                     height={400}
@@ -42,7 +39,7 @@ const Login = () => {
                     <div className="mb-6 flex flex-col items-center">
                         <div className="relative flex items-center justify-center">
                             <Image
-                                src="/images/line.svg"
+                                src="/assets/line.svg"
                                 alt="Line with Basket Logo"
                                 width={64}
                                 height={64}
@@ -50,7 +47,7 @@ const Login = () => {
                                 style={{ zIndex: 1 }}
                             />
                             <Image
-                                src="/images/logo.svg"
+                                src="/assets/logo_.svg"
                                 alt="Basket Logo"
                                 width={64}
                                 height={64}
@@ -60,6 +57,24 @@ const Login = () => {
                         </div>
                         <h2 className="mt-2 text-2xl font-bold text-[#35AFA0]" >Create Account</h2>
                         <p className="text-sm text-gray-500">Join Basket today</p>
+                    </div>
+
+                    {/* Social Auth Buttons */}
+                    <div className="mb-4 flex flex-col gap-2">
+                        <button
+                            type="button"
+                            className="flex items-center justify-center gap-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
+                        >
+                            <Image src="/assets/google.png" alt="Google" width={20} height={20} />
+                            Continue with Google
+                        </button>
+                        <button
+                            type="button"
+                            className="flex items-center justify-center gap-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
+                        >
+                            <Image src="/assets/facebook.png" alt="Facebook" width={20} height={20} />
+                            Continue with Facebook
+                        </button>
                     </div>
 
                     {/* Form */}
