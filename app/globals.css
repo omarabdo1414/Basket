@@ -1,24 +1,26 @@
 @import "tailwindcss";
 
+
 :root {
   --base-color: #35AFA0;
+  --footer-color: #F7F8FD;
 }
 
 /* second part of header */
 .head-2{
-  @apply container px-[150px] py-[6px] mx-auto w-full text-[12px] flex justify-between items-center max-xl:px-[50px] max-lg:px-0 max-md:block max-sm:px-[20px];
+  @apply container px-[150px] py-[4px] mx-auto w-full text-[12px] flex justify-between items-center max-xl:px-[50px] max-lg:px-0 max-md:block max-md:text-[10px] max-sm:px-[20px] ;
 }
 /* End second part of header */
 
 /* third part of header */
 .head-3{
-  @apply container px-[150px] py-[20px] mx-auto flex items-center justify-between max-xl:px-[50px] max-lg:px-0 max-md:container max-md:px-[50px];
+  @apply container px-[150px] py-[10px] mx-auto flex items-center justify-between max-xl:px-[50px] max-lg:px-0 max-md:container max-md:px-[50px];
 }
 .search-input{
   @apply  w-[37rem] bg-[#F3F4F7] placeholder:text-[0.8rem] text-gray-500 px-[28px] pr-[40px] py-[14px] rounded-[6px] max-lg:w-[27rem] max-md:hidden;
 }
 .search-input-2{
-  @apply bg-[#F3F4F7] w-full mx-[50px] placeholder:text-[0.8rem] text-gray-500 px-[28px] pr-[40px] py-[14px] rounded-[6px] hidden max-md:block;
+  @apply bg-[#F3F4F7] w-full mx-[50px] placeholder:text-[0.8rem] text-gray-500 px-[28px] pr-[40px] py-[14px] rounded-[6px] hidden  max-md:block;
 }
 .badge{
   @apply bg-[#EA2B0F] absolute text-white rounded-[50%] text-[9px] px-[4px] py-[0.5px];
@@ -27,7 +29,7 @@
 
 /* fourth part of header */
 .head-menu{
-  @apply container px-[150px] mx-auto flex items-center justify-between mb-5 max-xl:px-[50px] max-lg:px-0 max-lg:gap-2 max-md:gap-10 max-md:px-[50px] max-md:py-[20px];
+  @apply container px-[150px] mx-auto flex items-center justify-between mb-5 max-xl:px-[50px] max-lg:px-0 max-lg:gap-2 max-md:gap-10 max-md:px-[50px] max-md:py-[20px] max-md:hidden;
 }
 .category-btn{
   @apply bg-[var(--base-color)] flex gap-4 px-[26px] py-[12px] rounded-4xl max-lg:px-[15px] max-md:px-[25px];
@@ -37,6 +39,9 @@
 }
 .total-product{
   @apply font-medium uppercase text-[0.7rem] bg-[#EDEEF5] px-[10px] py-[0.5px] rounded-3xl border-white border-2 absolute top-[38px] left-[20%] max-md:left-[15%];
+}
+.cat-items{
+  @apply px-4 py-2 hover:bg-gray-100 hover:text-[var(--base-color)] cursor-pointer;
 }
 .menu-items{
   @apply transition-all duration-[0.1s] ease-in hover:text-[var(--base-color)];
@@ -48,6 +53,53 @@
   @apply flex gap-1 items-center;
 }
 /* End fourth part of header */
+
+/* part 1 in footer  */
+.footer-up{
+  @apply bg-[var(--base-color)] w-full py-[40px] flex relative ;
+}
+.text-and-email{
+  @apply  container px-[150px] py-[6px] mx-auto text-white max-xl:px-[50px] max-lg:px-0 max-md:px-[50px];
+}
+.email{
+  @apply  relative w-[40%] max-md:w-[50%] max-sm:w-full;
+}
+.email-input{
+  @apply py-[20px] pl-[50px] bg-white text-[#bcbcc3] text-[12px] rounded-[3px] w-full;
+}
+.email-btn{
+  @apply  absolute px-[18px] py-[15px] right-[5px] top-[5px] bg-[var(--base-color)] rounded-[3px] text-[12px];
+}
+.discount-photo{
+  @apply inline absolute bottom-[-1] right-60 max-xl:right-35 max-lg:right-10 max-md:right-0 max-sm:hidden;
+}
+/* End part 1 in footer  */
+
+/* part 2 in footer  */
+.footer-2{
+  @apply py-7 container px-[170px] mx-auto bg-[var(--footer-color)] max-xl:px-[50px] max-lg:px-0 max-md:px-[50px];
+}
+.split{
+  @apply  text-[24px] text-gray-300 font-light max-md:hidden; 
+}
+/* End part 2 in footer  */
+
+/* part3:last  */
+.footer-3{
+  @apply container px-[170px] mx-auto py-[80px] flex justify-between max-xl:px-[50px] max-lg:px-0 max-md:flex-wrap max-md:gap-10 max-md:px-[50px];
+}
+.footer-4{
+  @apply container px-[170px] mx-auto flex justify-between w-full py-[35px] max-xl:px-[50px] max-lg:px-0 max-md:px-[50px] max-md:flex-col max-md:gap-3 max-md:items-start;
+}
+.line{
+  @apply container px-[150px] mx-auto max-xl:px-[50px] max-lg:px-0;
+}
+.footer-last{
+  @apply text-[10px] text-gray-400 container px-[150px] mx-auto py-[30px] flex justify-between max-xl:px-[50px] max-lg:px-0 max-md:px-[50px] max-md:flex-col max-md:gap-2;
+}
+/* End part3:last  */
+
+
 
 @theme inline {
   --color-background: var(--background);
