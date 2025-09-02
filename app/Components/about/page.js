@@ -47,7 +47,7 @@ export default function About() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="flex justify-center">
-              <img
+              <image
                 src="/Assets/about-people.jpg.png"
                 alt="CEO"
                 className="max-h-[600px] object-cover rounded-md"
