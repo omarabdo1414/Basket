@@ -1,8 +1,25 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import { Dosis,Inter } from "next/font/google";
+
+import { Geist, Geist_Mono, Jersey_10 } from "next/font/google";
 import "./globals.css";
+import "@fontsource/dosis";
+import { Dosis, Inter } from "next/font/google";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+// Cart Context Provider
+import { CartProvider } from "./contexts/cartContext";
+
+ const dosis = Dosis({
+   subsets: ["latin"],
+   variable: "--font-dosis", 
+ });
+
+ const inter = Inter({
+   subsets: ["latin"],
+   variable: "--font-inter",
+ });
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,15 +31,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const inter = Inter({
+const jersey = Jersey_10({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-jersey",
+  weight: "400",
 });
-
-const dosis = Dosis({
-   subsets: ["latin"],
-   variable: "--font-dosis",
- });
 
 export const metadata = {
   title: "Basket",
@@ -33,11 +46,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${dosis.variable} ${inter.variable}`}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${jersey.variable} antialiased`}
       >
-        <Header /> 
+        <Header />
         <main>
-        {children}
+            <CartProvider>
+                {children}
+            </CartProvider>
         </main>
         <Footer />
       </body>

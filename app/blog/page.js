@@ -11,7 +11,7 @@ export default function Blog() {
           {/* Blog Post 1 */}
           <div className="mb-12">
             <image
-              src="/Assets/blog-3.jpg.png"
+              src="/assets/blog-3.jpg.png"
               alt="blog-img-1"
               className="w-full h-auto rounded-lg "
             />
@@ -33,7 +33,7 @@ export default function Blog() {
           {/* Blog Post 2 */}
           <div>
             <image
-              src="/Assets/blog-5.jpg.png"
+              src="/assets/blog-5.jpg.png"
               alt="blog-img-2"
               className="w-full h-auto rounded-lg "
             />
@@ -63,7 +63,7 @@ export default function Blog() {
             <div className="flex items-center gap-3  p-3  mb-3 relative">
               <div className="relative">
                 <image
-                  src="/Assets/blog-3.jpg.png"
+                  src="/assets/blog-3.jpg.png"
                   alt="post"
                   className="w-[70px] h-[50px] md:w-[90px] md:h-[40px] object-cover rounded-full "
                 />
@@ -80,7 +80,7 @@ export default function Blog() {
             <div className="flex items-center gap-3  p-3  mb-3 relative">
               <div className="relative">
                 <image
-                  src="/Assets/blog-5.jpg.png"
+                  src="/assets/blog-5.jpg.png"
                   alt="post"
                   className="w-[70px] h-[50px] md:w-[90px] md:h-[40px] object-cover rounded-full "
                 />
@@ -97,7 +97,7 @@ export default function Blog() {
             <div className="flex items-center gap-3  p-3  relative">
               <div className="relative">
                 <image
-                  src="/Assets/blog-1.jpg.png"
+                  src="/assets/blog-1.jpg.png"
                   alt="post"
                   className="w-[70px] h-[50px] md:w-[90px] md:h-[40px] object-cover rounded-full "
                 />
@@ -136,7 +136,7 @@ export default function Blog() {
              <div className='flex flex-col items-center sm:items-start'>
               <h3 className='uppercase text-semibold mb-4 '>widget banner</h3>
               <image
-               src="/Assets/sidebar-banner.gif.png" 
+               src="/assets/sidebar-banner.gif.png" 
                alt="side-image" />
              </div>
              {/* Container 4 */}

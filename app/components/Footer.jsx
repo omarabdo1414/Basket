@@ -11,10 +11,10 @@ const dosis = Dosis({
   subsets: ["latin"],
   variable: "--font-dosis",
 });
-
 export default function Footer() {
   return (
     <>
+    
     <footer className='bg-[var(--footer-color)]'>
       {/* part-1 in footer  */}
       <div className={`footer-up ${inter.className}`}>
@@ -193,6 +193,8 @@ export default function Footer() {
       </div>
       {/* End part-4-5  */}
 
+
+    
     </footer>
     </>
   )

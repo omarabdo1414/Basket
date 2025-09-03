@@ -8,6 +8,7 @@
 
 /* second part of header */
 .head-2{
+
   @apply container px-[150px] py-[4px] mx-auto w-full text-[12px] flex justify-between items-center max-xl:px-[50px] max-lg:px-0 max-md:block max-md:text-[10px] max-sm:px-[20px] ;
 }
 /* End second part of header */
@@ -54,6 +55,7 @@
 }
 /* End fourth part of header */
 
+
 /* part 1 in footer  */
 .footer-up{
   @apply bg-[var(--base-color)] w-full py-[40px] flex relative ;
@@ -81,6 +83,7 @@
 }
 .split{
   @apply  text-[24px] text-gray-300 font-light max-md:hidden; 
+
 }
 /* End part 2 in footer  */
 
@@ -108,6 +111,50 @@
   --font-mono: var(--font-geist-mono);
   
 }
+
+/* Starting Login and Register */
+
+/* Header Styles */
+
+.security-msg::after {
+  content: "";
+  position: relative;
+  width: 2px;
+  height: 80%;
+  top: -5px;
+  background: #99a1af;
+  margin-top: 8px;
+}
+
+@layer {
+  .login-form {
+    @apply text-[blue] bg-[lightgray] text-center m-auto p-5 w-[50%] rounded-lg;
+  }
+
+  .input-field {
+    @apply 
+    w-full 
+    rounded-[6px] border
+    border-gray-300 
+    text-gray-900
+    px-3 py-2 text-sm focus:border-[#35AFA0] focus:outline-none focus:ring-1 focus:ring-[#35AFA0]
+    placeholder:text-gray-400
+    ;
+  }
+}
+
+/* Ending Login and Register */
+
+/* Starting Checkout Styles */
+
+.delivery-input {
+  @apply absolute left-3 text-gray-500 bg-white px-1 transition-all duration-200
+                                        peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400
+                                        peer-focus:-top-3 peer-focus:text-sm
+                                        -top-3 text-sm
+}
+
+/* Ending Checkout Styles */
 
 @media (prefers-color-scheme: dark) {
   :root {
