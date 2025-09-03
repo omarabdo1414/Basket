@@ -5,7 +5,7 @@ export default function About() {
       <section className="about-section">
         <div
           className="relative bg-cover bg-center h-[75vh] w-full flex items-center justify-center text-center"
-          style={{ backgroundImage: 'url("/Assets/About-image.png")' }}
+          style={{ backgroundImage: 'url("/assets/About-image.png")' }}
         >
           <div className="absolute inset-0  bg-opacity-50"></div>
           <div className="relative z-10 text-white px-4">
@@ -48,7 +48,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="flex justify-center">
               <image
-                src="/Assets/about-people.jpg.png"
+                src="/assets/about-people.jpg.png"
                 alt="CEO"
                 className="max-h-[600px] object-cover rounded-md"
               />

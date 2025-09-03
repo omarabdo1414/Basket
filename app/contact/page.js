@@ -36,7 +36,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Location */}
           <div className="p-6 bg-gray-100 rounded-2xl">
-            <image src="/Assets/Icon.svg" className="mx-auto mb-2"/>
+            <image src="/assets/Icon.svg" className="mx-auto mb-2"/>
             <h3 className="text-xl mb-2 text-gray-700">
               102 Street 2714 Donovan
             </h3>
