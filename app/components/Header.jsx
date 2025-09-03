@@ -51,7 +51,7 @@ return (
         <hr className='opacity-10' />
 
         {/* third part in header */}
-        <div className="head-3 flex items-center">
+        <div className="head-3 flex items-center gap-2">
             {/* menu responsive */}
             <div className="md:hidden ">
                 <button className="flex flex-col gap-1.5 w-7 h-7 relative" onClick={() => setMenuOpen(!menuOpen)}>
@@ -62,14 +62,14 @@ return (
             </div>
             <div className="logo ">
                 <div className="flex items-center ">
-                    <Image src="/assets/logo.svg" alt='logo' width={50} height={50} className='inline'/>
+                    <Image src="/assets/logo.svg" alt='logo' width={50} height={50} className='inline w-8'/>
                     <p className="jersey text-[2rem] text-[var(--base-color)] relative bottom-1 max-md:text-[1.5rem] ">Basket</p>
                 </div>
                 <p className={`${inter.className} text-[0.6rem] text-[#3E445A] opacity-50 max-md:text-wrap max-md:text-[0.5rem]`} >Online Grocery Shopping Center</p>
             </div>
             <div className="search-bar relative ">
                 <input type="search" className={`search-input ${inter.className}`} placeholder='Search for Products, fruit, meat, eggs .etc...'/>
-                <Image src="/assets/seach.svg" alt='search icon' height={20} width={20} className=' absolute right-[1rem] top-[17px] max-md:block'/>
+                <Image src="/assets/seach.svg" alt='search icon' height={20} width={30} className=' absolute right-[1rem] top-[17px] max-md:block'/>
             </div>
             <div className='user-and-cart flex items-center max-md:gap-4 '>
                 <button onClick={() => setSearchOpen(!secrchisOpen)}>
@@ -78,7 +78,7 @@ return (
                 <Image src='/assets/userIcon.svg' alt='profile logo' height={24} width={24} className='p-1 border border-gray-300 rounded-[50%] size-7 max-md:hidden ' />
                 <p className={`${dosis.className} font-medium text-[14px] mx-[20px] max-md:hidden`}>$0.00</p> 
                 <div className="cart relative ">
-                    <Image src="/assets/cartIcon.svg" alt='cart icon' height={40}  width={40} className='p-[10px] bg-[#FFF1EE] rounded-[50%]  ' />
+                    <Image src="/assets/cartIcon.svg" alt='cart icon' height={40}  width={40} className='p-[10px] bg-[#FFF1EE] rounded-[50%] max-sm:w-[55px] ' />
                     <div className={`badge ${inter.className} top-0 right-0`}>
                         <span>0</span>
                     </div>
