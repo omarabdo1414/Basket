@@ -165,7 +165,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="social flex gap-1.5 ml-[15px]">
-              <a href=""><Image src="/assets/facebook.png" alt='App store' width={30} height={30} /></a>
+              <a href=""><Image src="/assets/facebook2.png" alt='App store' width={30} height={30} /></a>
               <a href=""><Image src="/assets/twitter.png" alt='App store' width={30} height={30} /></a>
               <a href=""><Image src="/assets/instagram.png" alt='App store' width={30} height={30} /></a>
             </div>
