@@ -1,11 +1,11 @@
 import React from 'react';
 import CartItem from './CartItem';
 
-const CartList = ({ items, onRemove }) => {
+const CartList = ({ items }) => {
     return (
         <div className="cart-list">
             {items.map(item => (
-                <CartItem key={item.id} item={item} onRemove={onRemove} />
+                <CartItem key={item.id} item={item} />
             ))}
         </div>
     );
