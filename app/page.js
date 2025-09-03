@@ -1,12 +1,7 @@
-
-export default function Home() {
+import React from 'react'
+export default function page() {
   return (
     <>
-      <div>
-        <h1 className="p-[100px]">
-          main
-        </h1>
-      </div>
     </>
-  );
+  )
 }
