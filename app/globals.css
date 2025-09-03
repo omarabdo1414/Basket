@@ -48,6 +48,11 @@
   @apply flex gap-1 items-center;
 }
 /* End fourth part of header */
+@theme {
+  --breakpoint-xs: 20rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -56,6 +61,50 @@
   --font-mono: var(--font-geist-mono);
   
 }
+
+/* Starting Login and Register */
+
+/* Header Styles */
+
+.security-msg::after {
+  content: "";
+  position: relative;
+  width: 2px;
+  height: 80%;
+  top: -5px;
+  background: #99a1af;
+  margin-top: 8px;
+}
+
+@layer {
+  .login-form {
+    @apply text-[blue] bg-[lightgray] text-center m-auto p-5 w-[50%] rounded-lg;
+  }
+
+  .input-field {
+    @apply 
+    w-full 
+    rounded-[6px] border
+    border-gray-300 
+    text-gray-900
+    px-3 py-2 text-sm focus:border-[#35AFA0] focus:outline-none focus:ring-1 focus:ring-[#35AFA0]
+    placeholder:text-gray-400
+    ;
+  }
+}
+
+/* Ending Login and Register */
+
+/* Starting Checkout Styles */
+
+.delivery-input {
+  @apply absolute left-3 text-gray-500 bg-white px-1 transition-all duration-200
+                                        peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400
+                                        peer-focus:-top-3 peer-focus:text-sm
+                                        -top-3 text-sm
+}
+
+/* Ending Checkout Styles */
 
 @media (prefers-color-scheme: dark) {
   :root {
