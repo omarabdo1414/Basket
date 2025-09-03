@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@fontsource/jersey-10": "^5.2.6",
+    "autoprefixer": "^10.4.21",
     "lucide-react": "^0.542.0",
     "element-plus": "^2.11.1",
 

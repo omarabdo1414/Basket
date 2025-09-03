@@ -1,3 +1,4 @@
+
 import { Geist, Geist_Mono, Jersey_10 } from "next/font/google";
 import "./globals.css";
 import "@fontsource/dosis";
@@ -11,7 +12,7 @@ import { CartProvider } from "./contexts/cartContext";
 
  const dosis = Dosis({
    subsets: ["latin"],
-   variable: "--font-dosis", // export as CSS variable
+   variable: "--font-dosis", 
  });
 
  const inter = Inter({
