@@ -7,6 +7,10 @@ import { useCart } from "../../contexts/cartContext";
 const Cart = () => {
     const { cart } = useCart();
 
+    const subtotal = cart.reduce((acc, item) => acc + item.price * item.count, 0);
+    const shipping = 0;
+    const total = subtotal + shipping;
+
     return (
         <div className="flex flex-col space-y-4">
             <div className="flex justify-between items-center">
@@ -32,7 +36,7 @@ const Cart = () => {
                     <div className="flex justify-between items-center mb-4">
                         <span className="text-lg font-medium">Total</span>
                         <span className="text-xl font-bold">
-                            ${cart.reduce((total, item) => total + (item.price || 0), 0).toFixed(2)}
+                            ${total.toFixed(2)}
                         </span>
                     </div>
                     <a href="/checkout">

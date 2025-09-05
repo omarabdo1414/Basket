@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
@@ -12,7 +13,7 @@ export function CartProvider({ children }) {
             description: "Juicy and flavorful chicken meatballs made with all-natural ingredients.",
             price: 7.25,
             image: "/assets/item_1.svg", // replace with your image path
-            count: 2 
+            count: 9
         },
         {
             id: 2,
@@ -34,6 +35,18 @@ export function CartProvider({ children }) {
 
     const [cart, setCart] = useState(items);
 
+    // add the cart to the local storage
+    useEffect(() => {
+        const storedCart = localStorage.getItem("cart");
+        if (storedCart) {
+            setCart(JSON.parse(storedCart));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
+
     const addToCart = (item) => {
         setCart((prev) => {
             const exists = prev.find((p) => p.id === item.id);
@@ -44,25 +57,47 @@ export function CartProvider({ children }) {
             }
             return [...prev, { ...item, count: 1 }];
         });
+
+        localStorage.setItem("cart", JSON.stringify(cart));
     };
 
     const removeFromCart = (id) => {
         setCart((prev) => prev.filter((p) => p.id !== id));
+        localStorage.setItem("cart", JSON.stringify(cart));
     };
 
     const updateQuantity = (id, amount) => {
+        console.log('updateQuantity');
         setCart((prev) =>
             prev.map((p) =>
                 p.id === id ? { ...p, count: Math.max(1, p.count + amount) } : p
             )
         );
+        localStorage.setItem("cart", JSON.stringify(cart));
+    };
+
+    const clearCart = () => {
+        setCart([]);
+        localStorage.removeItem("cart");
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity }}>
+        <CartContext.Provider value={{ 
+            cart,
+            addToCart, 
+            removeFromCart, 
+            updateQuantity, 
+            clearCart 
+        }}>
             {children}
         </CartContext.Provider>
     );
 }
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () => {
+    const context = useContext(CartContext);
+    if (!context) {
+        throw new Error('useCart must be used within a CartProvider');
+    }
+    return context;
+}
