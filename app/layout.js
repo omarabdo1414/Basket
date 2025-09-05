@@ -1,7 +1,7 @@
 
 import { Geist, Geist_Mono, Jersey_10 } from "next/font/google";
 import "./globals.css";
-import "@fontsource/dosis";
+// import "@fontsource/dosis";
 import { Dosis, Inter } from "next/font/google";
 
 import Header from "./components/Header";
