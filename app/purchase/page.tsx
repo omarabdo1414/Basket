@@ -1,36 +1,18 @@
 "use client"
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { Button } from "@/components/ui/button";
 import RelatedProducts from "./components/RelatedProducts"
 import ProductGallery from "./components/ProductGallery"
 import PurchaseCard from "./components/PurchaseCard"
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import {
   Dialog,
   DialogContent,
   DialogTrigger,
   DialogClose,
+  DialogTitle,
 } from "@/components/ui/dialog";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, FreeMode, Thumbs } from 'swiper/modules';
-import { X, ShoppingCart, Heart, Plus, Minus } from 'lucide-react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/free-mode';
-import 'swiper/css/thumbs';
-
+import { X } from 'lucide-react';
 // Product data
 const productData = {
   id: 1,
@@ -125,18 +107,23 @@ const PurchasePage = () => {
               </DialogClose>
 
               {/* Content */}
+              <DialogTitle title="aaaa" />
               <div className="overflow-y-auto max-h-[90vh] bg-white rounded-xl">
                 <div className="p-4 sm:p-6 lg:p-8">
                   {/* Main Product Section */}
-                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
-                    <div className="order-2 lg:order-1">
+                 {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12  ">
+                    <div className="order-2 lg:order-1 ">
                       <ProductGallery images={productData.images} />
                     </div>
-                    <div className="order-1 lg:order-2">
+                    <div className="order-1 lg:order-2 ">
                       <PurchaseCard product={productData} />
                     </div>
-                  </div>
+                  </div> */}
 
+<div className="block lg:flex  gap-8   mb-12 justify-between">
+                      <ProductGallery images={productData.images} />
+                      <PurchaseCard product={productData} />
+                  </div>
 
                     {/* Related Products Section */}
                     <RelatedProducts products={relatedProducts} />

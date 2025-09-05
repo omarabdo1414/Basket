@@ -12,7 +12,7 @@ const PurchaseCard = ({ product }) => {
   const decrementQuantity = () => setQuantity(prev => prev > 1 ? prev - 1 : 1);
 
   return (
-    <Card className="w-full border-0 shadow-none">
+    <Card className="w-full border-0 shadow-none ">
       <CardHeader className="px-0 pt-0 pb-4">
         <CardTitle className="text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
           {product.name}
