@@ -1,6 +1,8 @@
 "use client";
 import { Phone, Mail } from "lucide-react";
 import { useState } from "react";
+import Image from 'next/image';
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -36,7 +38,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Location */}
           <div className="p-6 bg-gray-100 rounded-2xl">
-            <image src="/assets/Icon.svg" className="mx-auto mb-2"/>
+            <Image src="/assets/Icon.svg" alt="icon" width={40} height={40} className="mx-auto mb-2"/>
             <h3 className="text-xl mb-2 text-gray-700">
               102 Street 2714 Donovan
             </h3>

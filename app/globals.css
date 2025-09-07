@@ -8,8 +8,10 @@
 
 /* second part of header */
 .head-2{
-
   @apply container px-[150px] py-[4px] mx-auto w-full text-[12px] flex justify-between items-center max-xl:px-[50px] max-lg:px-0 max-md:block max-md:text-[10px] max-sm:px-[20px] ;
+}
+.active{
+  @apply bg-[#F0FAFF] text-[var(--base-color)] px-[15px] py-[6px] rounded-[30px];
 }
 /* End second part of header */
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebookF, FaInstagram, FaTwitter, FaReddit, FaPinterest } from "react-icons/fa";
+import Image from 'next/image';
 
 export default function Blog() {
   return (
@@ -10,9 +11,11 @@ export default function Blog() {
         <div className="md:w-3/4 mb-12 md:mb-0">
           {/* Blog Post 1 */}
           <div className="mb-12">
-            <image
+            <Image
               src="/assets/blog-3.jpg.png"
               alt="blog-img-1"
+              width={1000}
+              height={40}
               className="w-full h-auto rounded-lg "
             />
             <p className="text-sm text-gray-500 mt-3 uppercase">Grocery</p>
@@ -32,9 +35,11 @@ export default function Blog() {
 
           {/* Blog Post 2 */}
           <div>
-            <image
+            <Image
               src="/assets/blog-5.jpg.png"
               alt="blog-img-2"
+              width={1000}
+              height={40}
               className="w-full h-auto rounded-lg "
             />
             <p className="text-sm text-gray-500 mt-3 uppercase">Grocery</p>
@@ -62,9 +67,10 @@ export default function Blog() {
             {/* Box 1 */}
             <div className="flex items-center gap-3  p-3  mb-3 relative">
               <div className="relative">
-                <image
+                <Image
                   src="/assets/blog-3.jpg.png"
                   alt="post"
+                  width={70} height={50}
                   className="w-[70px] h-[50px] md:w-[90px] md:h-[40px] object-cover rounded-full "
                 />
                 <span className="absolute -top-2 -right-2 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full font-bold" style={{backgroundColor:"#35AFA0"}}>
@@ -79,9 +85,10 @@ export default function Blog() {
             {/* Box 2 */}
             <div className="flex items-center gap-3  p-3  mb-3 relative">
               <div className="relative">
-                <image
+                <Image
                   src="/assets/blog-5.jpg.png"
                   alt="post"
+                  width={70} height={50}
                   className="w-[70px] h-[50px] md:w-[90px] md:h-[40px] object-cover rounded-full "
                 />
                 <span className="absolute -top-2 -right-2 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full font-bold" style={{backgroundColor:"#35AFA0"}}>
@@ -96,9 +103,10 @@ export default function Blog() {
             {/* Box 3 */}
             <div className="flex items-center gap-3  p-3  relative">
               <div className="relative">
-                <image
+                <Image
                   src="/assets/blog-1.jpg.png"
                   alt="post"
+                  width={70} height={50}
                   className="w-[70px] h-[50px] md:w-[90px] md:h-[40px] object-cover rounded-full "
                 />
                 <span className="absolute -top-2 -right-2  text-white text-xs w-6 h-6 flex items-center justify-center rounded-full font-bold "style={{backgroundColor:"#35AFA0"}}>
@@ -135,9 +143,10 @@ export default function Blog() {
              {/* Container 3 */}
              <div className='flex flex-col items-center sm:items-start'>
               <h3 className='uppercase text-semibold mb-4 '>widget banner</h3>
-              <image
+              <Image
                src="/assets/sidebar-banner.gif.png" 
-               alt="side-image" />
+               alt="side-image"
+               width={100} height={100}/>
              </div>
              {/* Container 4 */}
              <div className="mt-10">
