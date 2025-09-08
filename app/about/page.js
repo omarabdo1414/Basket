@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from "next/image"
 export default function About() {
   return (
     <>
@@ -47,10 +48,13 @@ export default function About() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="flex justify-center">
-              <image
+              <Image
                 src="/assets/about-people.jpg.png"
                 alt="CEO"
                 className="max-h-[600px] object-cover rounded-md"
+                 width={500}
+                height={600}  
+
               />
             </div>
             <div>

@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Inter, Dosis } from "next/font/google";
-import "@fontsource/jersey-10";
+// import "@fontsource/jersey-10";
 import { useState } from "react";
 
 const inter = Inter({
@@ -69,7 +69,7 @@ return (
             </div>
             <div className="search-bar relative ">
                 <input type="search" className={`search-input ${inter.className}`} placeholder='Search for Products, fruit, meat, eggs .etc...'/>
-                <Image src="/assets/seach.svg" alt='search icon' height={20} width={30} className=' absolute right-[1rem] top-[17px] max-md:block'/>
+                <Image src="/assets/seach.svg" alt='search icon' height={20} width={20} className=' absolute right-[1rem] top-[17px] max-md:block'/>
             </div>
             <div className='user-and-cart flex items-center max-md:gap-4 '>
                 <button onClick={() => setSearchOpen(!secrchisOpen)}>
