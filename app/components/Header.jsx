@@ -4,8 +4,13 @@ import React from 'react';
 import Image from 'next/image';
 import { Inter, Dosis } from "next/font/google";
 // import "@fontsource/jersey-10";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import Link from 'next/link';
+import { useRouter } from "next/navigation";
+import { LogOut } from "lucide-react";
+import { supabase } from "../../lib/supabaseClient";
+
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -22,6 +27,33 @@ const [menuOpen, setMenuOpen] = useState(false);
 const [categoriesOpen, setCategoriesOpen] = useState(false);
 const [secrchisOpen, setSearchOpen] = useState(false);
 const pathname = usePathname();
+const router =useRouter();
+const [session, setSession] = useState(null);
+
+useEffect(() => {
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setSession(session);
+    };
+    getSession();
+
+    // also listen for login/logout events
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setSession(session);
+      }
+    );
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
+
+  const logOut = async () => {
+    await supabase.auth.signOut();
+    router.push("/login");
+  };
+
 
 return (
     <>
@@ -77,7 +109,16 @@ return (
                 <button onClick={() => setSearchOpen(!secrchisOpen)}>
                     <Image src="/assets/seach.svg" alt='search icon' height={20} width={20} className='hidden max-md:block'/>
                 </button>
-                <Image src='/assets/userIcon.svg' alt='profile logo' height={24} width={24} className='p-1 border border-gray-300 rounded-[50%] size-7 max-md:hidden ' />
+                {session ? (
+                    <button onClick={logOut}>
+                        <LogOut className="w-6 h-6 text-red-600" />
+                    </button>
+                ) : (
+                    <button onClick={() => router.push("/register")}>
+                        <Image src='/assets/userIcon.svg' alt='profile logo' height={24} width={24} className='p-1 border border-gray-300 rounded-[50%] size-7 max-md:hidden ' />
+                    </button>
+                )}
+                
                 <p className={`${dosis.className} font-medium text-[14px] mx-[20px] max-md:hidden`}>$0.00</p> 
                 <div className="cart relative ">
                     <Image src="/assets/cartIcon.svg" alt='cart icon' height={40}  width={40} className='p-[10px] bg-[#FFF1EE] rounded-[50%] max-sm:w-[47px] ' />
@@ -133,7 +174,7 @@ return (
                 items-center max-lg:gap-5
                 max-md:flex-wrap max-md:hidden`}>
                 <li className='menu-items'>
-                    <Link href="/home" className={pathname === '/home' ? 'active' : '' }>Home</Link>
+                    <Link href="/" className={pathname === '/' ? 'active' : '' }>Home</Link>
                 </li>
                 <li className='menu-items'>
                     <Link href="/shop" className={pathname === '/shop' ? 'active' : '' }>shop</Link>
@@ -167,7 +208,7 @@ return (
                 {/* Categories Dropdown */}
                 <li className="categories relative flex flex-col px-4 py-2 rounded-[12px]">
                     <div className='flex items-center gap-10'>
-                        <button onClick={() => setCategoriesOpen(!categoriesOpen)} className="category-btn flex items-center justify-between gap-2 w-full" >
+                        <button onClick={() => setCategoriesOpen(!categoriesOpen)} className="category-btn flex items-center justify-between gap-2 w-full relative" >
                             <div className="flex items-center gap-2">
                                 <span className={`category-btn-txt ${dosis.className}`}> All categories </span>
                             </div>
@@ -178,7 +219,7 @@ return (
                     </div>
 
                     {/* Dropdown list */}
-                    <ul className={`flex flex-col gap-2 text-left mt-2 pl-6 transition-all duration-300 overflow-hidden ${categoriesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+                    <ul className={`flex flex-col absolute z-10 order-1 gap-2 text-left mt-2 pl-6 transition-all duration-300 overflow-hidden ${categoriesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
                         <li className="menu-items"><a href="#">Fruits</a></li>
                         <li className="menu-items"><a href="#">Vegetables</a></li>
                         <li className="menu-items"><a href="#">Meats</a></li>
@@ -189,7 +230,7 @@ return (
                 </li>
 
                 {/* Rest of your menu items */}
-                <li><Link href="/home" className={pathname === '/home' ? 'active' : '' }>home</Link></li>
+                <li><Link href="/" className={pathname === '/' ? 'active' : '' }>home</Link></li>
                 <li className="menu-items"><Link href="#" >meats & seafood</Link></li>
                 <li className="menu-items"><Link href="#">bakery</Link></li>
                 <li className="menu-items"><Link href="#">beverages</Link></li>

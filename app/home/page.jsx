@@ -18,6 +18,8 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import { useRef } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { Inter } from "next/font/google";
+import { useRouter } from "next/navigation";
+import { supabase } from "../../lib/supabaseClient"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -194,16 +196,37 @@ export default function Home() {
     { id: 8, name: "Vegetables", count: 88, img: Image1 },
     { id: 9, name: "Vegetables", count: 99, img: Image1 },
   ];
+
+
+  const router = useRouter();
+
+  const AddToCart = async (product) => {
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session) {
+      router.push("/register");
+      return;
+    }
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert('Added to cart');
+  };
+  
+  
+
   return (
+
     <>
       {/* images section */}
       <section className=" mx-auto    lg:px-16 xl:px-40  vh-100">
         <div className="grid grid-cols-1  place-items-center md:grid-cols-1 lg:grid-cols-3 ">
-          <div className="relative  col-span-1 lg:col-span-2 w-full h-full">
+          <div className="relative  col-span-1 lg:col-span-2 w-full h-full -z-10">
             <Image
               src={Image8}
               alt="juice product "
-              className=" rounded-lg cont w-full h-full"
+              className=" rounded-lg cont w-full h-full "
             />
             <div className="home-first absolute left-10 top-5   lg:left-20 md:top-20 space-y-2">
               <div>
@@ -320,13 +343,13 @@ export default function Home() {
           {/* Buttons of slider*/}
           <button
             onClick={scrollLeft}
-            className="absolute right-[350px] md:-left-5 top-1/2 -translate-y-1/2 bg-white shadow-md p-1 rounded-full z-10"
+            className="absolute -left-3  top-1/2 -translate-y-1/2 bg-white shadow-md p-1 rounded-full z-10"
           >
             <ChevronLeftIcon className="w-6 h-6" />
           </button>
           <button
             onClick={scrollRight}
-            className="absolute left-[350px] md:-right-5 top-1/2 -translate-y-1/2 bg-white shadow-md p-1 rounded-full z-10"
+            className="absolute -right-3 top-1/2 -translate-y-1/2 bg-white shadow-md p-1 rounded-full z-10"
           >
             <ChevronRightIcon className="w-6 h-6" />
           </button>
@@ -367,7 +390,7 @@ export default function Home() {
                 <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
                   {product.discount}
                 </p>
-                <button className="text-[#35AFA0] border rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
+                <button className="text-[#35AFA0] border rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer" onClick={()=>{AddToCart(product)}}>
                   Add to cart
                 </button>
               </div>
@@ -482,7 +505,7 @@ export default function Home() {
                 <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
                   60%
                 </p>
-                <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer">
+                <button className="text-[#35AFA0] border-1 rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer" onClick={()=>{AddToCart(product)}}>
                   Add to cart
                 </button>
               </div>
