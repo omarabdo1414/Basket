@@ -1,15 +1,45 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react"
+import { supabase } from "../../lib/supabaseClient"
+import { useRouter } from "next/navigation";
 
 
 const Login = () => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+    const [isError, setIsError] = useState(false);
+    const router = useRouter();
+    
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+
+        if (error) {
+        setMessage(error.message);
+        setIsError(true);
+        } else {
+        console.log("User:", data.user);
+        console.log("Session:", data.session);
+        setMessage("Login successful!");
+        setIsError(false);
+        router.push("/");
+        setTimeout(() => {
+            router.push("/");
+        }, 500);
+        }
+    }
+
+
     return (
         <>
             <div className="flex min-h-screen items-center justify-evenly bg-gray-50 flex-wrap">
                 <div className="lg:block sm:hidden xs:hidden">
                     <div className="">
-                        <div className="mb-6 flex flex items-center">
+                        <div className="mb-6 flex items-center">
                             <div className="relative flex items-center justify-center">
                                 <Image
                                     src="/assets/line.svg"
@@ -78,7 +108,7 @@ const Login = () => {
                     </div>
 
                     {/* Form */}
-                    <form className="space-y-4">
+                    <form className="space-y-4" onSubmit={handleLogin}>
                         <div>
                             <label className="mb-1 block text-sm font-medium text-gray-700">
                                 Email
@@ -87,6 +117,8 @@ const Login = () => {
                                 type="email"
                                 placeholder="you@example.com"
                                 className="input-field"
+                                value={email}
+                                onChange={(e)=>(setEmail(e.target.value))}
                             />
                         </div>
 
@@ -98,11 +130,14 @@ const Login = () => {
                                 type="password"
                                 placeholder="enter password"
                                 className="input-field"
+                                value={password}
+                                onChange={(e)=>(setPassword(e.target.value))}
                             />
                         </div>
-
+                        <p className={`message ${isError ? "text-red-500" : "text-green-500"}`}>
+                            {message}
+                        </p>
                         <button
-                            type="submit"
                             className="w-full rounded-xl bg-[#35AFA0] px-4 py-2 text-white transition hover:bg-teal-600"
                         >
                             Login

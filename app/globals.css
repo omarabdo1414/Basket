@@ -128,12 +128,7 @@
   margin-top: 8px;
 }
 
-@layer {
-  .login-form {
-    @apply text-[blue] bg-[lightgray] text-center m-auto p-5 w-[50%] rounded-lg;
-  }
-
-  .input-field {
+.input-field {
     @apply 
     w-full 
     rounded-[6px] border
@@ -143,6 +138,13 @@
     placeholder:text-gray-400
     ;
   }
+  
+@layer {
+  .login-form {
+    @apply text-[blue] bg-[lightgray] text-center m-auto p-5 w-[50%] rounded-lg;
+  }
+
+  
 }
 
 /* Ending Login and Register */
