@@ -87,7 +87,7 @@ export default function Register() {
                     </div>
 
                     {/* Form */}
-                    <form className="space-y-4 xs:px-4 lg:px-0" onSubmit={handleOnSubmit}>
+                    <form className="space-y-4 xs:px-4 lg:px-0">
                         <div>
                             <label className="mb-1 block text-sm font-medium text-gray-700">
                                 User name
@@ -96,8 +96,6 @@ export default function Register() {
                                 type="text"
                                 placeholder="enter username"
                                 className="input-field"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
 
@@ -109,10 +107,6 @@ export default function Register() {
                                 type="email"
                                 placeholder="you@example.com"
                                 className="input-field"
-                                value={email}
-                                onChange={(e) => {
-                                    setEmail(e.target.value);
-                                }}
                             />
                         </div>
 
@@ -124,8 +118,6 @@ export default function Register() {
                                 type="password"
                                 placeholder="enter password"
                                 className="input-field"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
 
