@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from "next/image"
+import Image from 'next/image';
 export default function About() {
   return (
     <>
@@ -52,9 +52,8 @@ export default function About() {
                 src="/assets/about-people.jpg.png"
                 alt="CEO"
                 className="max-h-[600px] object-cover rounded-md"
-                 width={500}
-                height={600}  
-
+                width={600}
+                height={500}
               />
             </div>
             <div>
@@ -87,7 +86,7 @@ export default function About() {
           <div className="
             relative 
             mt-[-4rem]
-            md:mt-[-100px]
+            md:mt-[-98px]
             md:w-[80%] 
             md:ml-32
           ">

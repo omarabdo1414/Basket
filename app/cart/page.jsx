@@ -9,7 +9,7 @@ const CartPage = () => {
                     Your Shopping Cart
                 </h1>
                 <div className="bg-white rounded-lg shadow-lg p-6">
-                    <Cart />
+                    <Cart item/>
                 </div>
             </div>
         </div>

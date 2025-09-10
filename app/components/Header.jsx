@@ -109,6 +109,7 @@ return (
                     <span className={`category-btn-txt ${dosis.className}`}> All categories </span>
                     <Image src="/assets/dropArrow.svg" height={10} width={10} alt="drop arrow" className={`transition-transform duration-300 ${ categoriesOpen ? "rotate-180" : "rotate-0"}`} />
                 </button>
+                <span className={`total-product ${dosis.className} `}>total 50 Products</span>
 
                 {/* Dropdown */}
                 {categoriesOpen && (
@@ -212,3 +213,4 @@ return (
   )
    
 }
+

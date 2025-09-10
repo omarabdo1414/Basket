@@ -1,31 +1,25 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
 import { useCart } from "../../contexts/cartContext";
 
 const CartItem = ({ item }) => {
+    const { updateQuantity, removeFromCart } = useCart();
 
-    let [count, setCount] = React.useState(item.count);
-    let { items } = useCart();
-
-    const removeItem = (itemId) => {
-        const newItems = items.filter((item) => item.id !== itemId);
-    };
-
-    const handleRemove = (itemId) => {
-        if (count > 1) {
-            count -= 1;
-            setCount(count);
+    const handleDecrease = () => {
+        if (item.count > 1) {
+            console.log('decrease');
+            console.log(item.id);
+            updateQuantity(item.id, -1);
         } else {
-            removeItem(itemId);
+            removeFromCart(item.id);
         }
     };
 
-    const addButton = () => {
-        count += 1;
-        setCount(count);
+    const handleIncrease = () => {
+        updateQuantity(item.id, 1);
     };
 
     return (
@@ -45,23 +39,29 @@ const CartItem = ({ item }) => {
                         <span className="text-lg font-bold">{item.name}</span>
                         <p className="text-xs text-gray-500 text[20px]">{item.description}</p>
                         <div className="flex items-center gap-2 mt-2 pt-3">
-                            <button onClick={() => {
-                                addButton();
-                            }} className="text-gray-900 px-2 py-1 rounded-[50%] border border-gray-300 w-[50px] h-[50px]">
+                            <button
+                                onClick={handleIncrease}
+                                className="text-gray-900 px-2 py-1 rounded-[50%] border border-gray-300 w-[50px] h-[50px]"
+                            >
                                 +
                             </button>
                             <div className="w-[50px] h-[50px] bg-gray-200 rounded-[50%] flex items-center justify-center">
-                                <span className="text-lg text-gray-900  px-[6px] mx-3 text-center">{count}</span>
+                                <span className="text-lg text-gray-900 px-[6px] mx-3 text-center">
+                                    {item.count}
+                                </span>
                             </div>
-                            <button onClick={() => {
-                                handleRemove(item.id);
-                            }} className="text-gray-900 px-2 py-1 rounded-[50%] border border-gray-300 w-[50px] h-[50px]">
+                            <button
+                                onClick={handleDecrease}
+                                className="text-gray-900 px-2 py-1 rounded-[50%] border border-gray-300 w-[50px] h-[50px]"
+                            >
                                 -
                             </button>
                         </div>
                     </div>
                 </div>
-                <span className="text-sm font-medium">${(item.price * count).toFixed(2)}</span>
+                <span className="text-sm font-medium">
+                    ${(item.price * item.count).toFixed(2)}
+                </span>
             </div>
         </div>
     );

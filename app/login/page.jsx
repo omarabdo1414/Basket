@@ -9,7 +9,7 @@ const Login = () => {
             <div className="flex min-h-screen items-center justify-evenly bg-gray-50 flex-wrap">
                 <div className="lg:block sm:hidden xs:hidden">
                     <div className="">
-                        <div className="mb-6 flex flex items-center">
+                        <div className="mb-6 flex items-center">
                             <div className="relative flex items-center justify-center">
                                 <Image
                                     src="/assets/line.svg"
