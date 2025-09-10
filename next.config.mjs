@@ -1,13 +1,18 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images : {
-    remotePatterns : [
-        {
-            protocol : "https" ,
-            hostname : "*"
-        }
-    ]
-  }
-};
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'thestayathomechef.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images-prod.healthline.com',
+      },
+    ],
+  },
+}
 
-export default nextConfig;
+export default nextConfig

@@ -5,9 +5,9 @@ import CartList from './CartList';
 import { useCart } from "../../contexts/cartContext";
 
 const Cart = () => {
-    const { cart } = useCart();
+    const { products, cart } = useCart();
 
-    const subtotal = cart.reduce((acc, item) => acc + item.price * item.count, 0);
+    const subtotal = cart.reduce((acc, item) => acc + item.price * item.amount_in_stoke, 0);
     const shipping = 0;
     const total = subtotal + shipping;
 

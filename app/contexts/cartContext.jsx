@@ -1,41 +1,29 @@
 "use client";
-import { useEffect } from "react";
-import { createContext, useContext, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
+import supabase from "../lib/subabase-client";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
+    const [products, setProducts] = useState([]); // fetched from DB
+    const [cart, setCart] = useState([]);
 
-    const items = [
-        {
-            id: 1,
-            name: "All Natural Italian-Style Chicken Meatballs",
-            description: "Juicy and flavorful chicken meatballs made with all-natural ingredients.",
-            price: 7.25,
-            image: "/assets/item_1.svg", // replace with your image path
-            count: 9
-        },
-        {
-            id: 2,
-            name: "Coca-Cola – 2 L Bottle",
-            description: "Refreshing cola beverage in a 2-liter bottle.",
-            price: 3.85,
-            image: "/assets/item_2.svg",
-            count: 3
-        },
-        {
-            id: 3,
-            name: "Fairlife Lactose-Free 2% Milk",
-            description: "Creamy and delicious lactose-free milk.",
-            price: 3.69,
-            image: "/assets/item_3.svg",
-            count: 1
-        },
-    ];
+    // Fetch products from Supabase on mount
+    useEffect(() => {
+        const fetchProducts = async () => {
+            let { data, error } = await supabase.from("products").select("*");
+            if (error) {
+                console.error("Error fetching products:", error);
+            } else {
+                console.log("Fetched products:", data);
+                setProducts(data);
+            }
+        };
 
-    const [cart, setCart] = useState(items);
+        fetchProducts();
+    }, []);
 
-    // add the cart to the local storage
+    // Load cart from localStorage
     useEffect(() => {
         const storedCart = localStorage.getItem("cart");
         if (storedCart) {
@@ -43,10 +31,12 @@ export function CartProvider({ children }) {
         }
     }, []);
 
+    // Sync cart to localStorage
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
+    // Cart logic
     const addToCart = (item) => {
         setCart((prev) => {
             const exists = prev.find((p) => p.id === item.id);
@@ -57,38 +47,35 @@ export function CartProvider({ children }) {
             }
             return [...prev, { ...item, count: 1 }];
         });
-
-        localStorage.setItem("cart", JSON.stringify(cart));
     };
 
     const removeFromCart = (id) => {
         setCart((prev) => prev.filter((p) => p.id !== id));
-        localStorage.setItem("cart", JSON.stringify(cart));
     };
 
     const updateQuantity = (id, amount) => {
-        console.log('updateQuantity');
         setCart((prev) =>
             prev.map((p) =>
                 p.id === id ? { ...p, count: Math.max(1, p.count + amount) } : p
             )
         );
-        localStorage.setItem("cart", JSON.stringify(cart));
     };
 
     const clearCart = () => {
         setCart([]);
-        localStorage.removeItem("cart");
     };
 
     return (
-        <CartContext.Provider value={{ 
-            cart,
-            addToCart, 
-            removeFromCart, 
-            updateQuantity, 
-            clearCart 
-        }}>
+        <CartContext.Provider
+            value={{
+                products, // fetched products from DB
+                cart,
+                addToCart,
+                removeFromCart,
+                updateQuantity,
+                clearCart,
+            }}
+        >
             {children}
         </CartContext.Provider>
     );
@@ -96,8 +83,9 @@ export function CartProvider({ children }) {
 
 export const useCart = () => {
     const context = useContext(CartContext);
+    console.log(context);
     if (!context) {
-        throw new Error('useCart must be used within a CartProvider');
+        throw new Error("useCart must be used within a CartProvider");
     }
     return context;
-}
+};

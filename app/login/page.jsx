@@ -2,15 +2,15 @@
 import Link from "next/link";
 import Image from "next/image";
 
-
 const Login = () => {
+
     return (
         <>
             <div className="flex min-h-screen items-center justify-evenly bg-gray-50 flex-wrap">
-                <div className="lg:block sm:hidden xs:hidden">
+                <div className="md:block hidden">
                     <div className="">
                         <div className="mb-6 flex items-center">
-                            <div className="relative flex items-center justify-center">
+                            <div className="relative flex items-center justify-center w-[200px] lg:w-[400px]">
                                 <Image
                                     src="/assets/line.svg"
                                     alt="Line with Basket Logo"
@@ -28,13 +28,13 @@ const Login = () => {
                                     style={{ zIndex: 2 }}
                                 />
                             </div>
-                            <h2 className="relative left-10 transform -translate-x-1/2 mt-2 text-[70px] font-medium text-[#35AFA0] tracking-wide" style={{ fontFamily: "'Jersey 10', sans-serif" }}>Basket</h2>
+                            <h2 className="relative left-10 transform -translate-x-1/2 mt-2 lg:text-[70px] text-[50px] font-medium text-[#35AFA0] tracking-wide" style={{ fontFamily: "'Jersey 10', sans-serif" }}>Basket</h2>
                         </div>
-                        <p className="text-sm text-gray-500 text-[30px]">Online Grocery Shopping Center</p>
+                        <p className="text-sm text-gray-500 lg:text-[30px] text-[20px]">Online Grocery Shopping Center</p>
                     </div>
 
                 </div>
-                <div className="lg:w-full lg:max-w-md lg:rounded-[10px] lg:bg-white lg:p-8 lg:shadow-lg xs:w-8/12 xs:mx-2 xs:my-8 xs:bg-white xs:p-2 xs:rounded-lg xs:shadow-md">
+                <div className="lg:w-full lg:max-w-md lg:rounded-[10px] bg-white p-8 shadow-lg xs:w-8/12 xs:mx-2 xs:my-8 xs:bg-white xs:p-2 rounded-lg xs:shadow-md">
                     {/* Logo */}
                     <div className="mb-6 flex flex-col items-center">
                         <div className="relative flex items-center justify-center">
@@ -78,7 +78,7 @@ const Login = () => {
                     </div>
 
                     {/* Form */}
-                    <form className="space-y-4">
+                    <form className="space-y-4" onSubmit={handleOnSubmit}>
                         <div>
                             <label className="mb-1 block text-sm font-medium text-gray-700">
                                 Email

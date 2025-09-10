@@ -3,14 +3,16 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Register() {
+
+
     return (
         <>
             {/* Register Form and logo */}
             <div className="flex min-h-screen items-center justify-evenly bg-gray-50">
                 <div className="flex-wrap">
-                    <div className="lg:block sm:hidden xs:hidden">
+                    <div className="md:block hidden">
                         <div className="mb-6 flex items-center">
-                            <div className="flex items-center justify-center">
+                            <div className="relative flex items-center justify-center w-[200px] lg:w-[400px]">
                                 <Image
                                     src="/assets/line.svg"
                                     alt="Line with Basket Logo"
@@ -28,13 +30,13 @@ export default function Register() {
                                     style={{ zIndex: 2 }}
                                 />
                             </div>
-                            <h2 className="relative left-10 transform -translate-x-1/2 mt-2 text-[70px] font-medium text-[#35AFA0] tracking-wide" style={{ fontFamily: "'Jersey 10', sans-serif" }}>Basket</h2>
+                            <h2 className="relative left-10 transform -translate-x-1/2 mt-2 lg:text-[70px] text-[50px] font-medium text-[#35AFA0] tracking-wide" style={{ fontFamily: "'Jersey 10', sans-serif" }}>Basket</h2>
                         </div>
-                        <p className="text-sm text-gray-500 text-[30px]">Online Grocery Shopping Center</p>
+                        <p className="text-sm text-gray-500 lg:text-[30px] text-[20px]">Online Grocery Shopping Center</p>
                     </div>
 
                 </div>
-                <div className="lg:w-full lg:max-w-md lg:rounded-[10px] lg:bg-white lg:p-8 lg:shadow-lg xs:w-8/12 xs:mx-2 xs:my-8 xs:bg-white xs:p-2 xs:rounded-lg xs:shadow-md">
+                <div className="lg:w-full lg:max-w-md lg:rounded-[10px] bg-white p-8 my-8 shadow-lg xs:w-8/12 xs:mx-2 xs:my-8 xs:bg-white xs:p-2 rounded-lg xs:shadow-md">
                     {/* Logo */}
                     <div className="mb-6 flex flex-col items-center ">
                         <div className="relative flex items-center justify-center">
@@ -85,15 +87,17 @@ export default function Register() {
                     </div>
 
                     {/* Form */}
-                    <form className="space-y-4 xs:px-4 lg:px-0">
+                    <form className="space-y-4 xs:px-4 lg:px-0" onSubmit={handleOnSubmit}>
                         <div>
                             <label className="mb-1 block text-sm font-medium text-gray-700">
-                                Full Name
+                                User name
                             </label>
                             <input
                                 type="text"
-                                placeholder="John Doe"
+                                placeholder="enter username"
                                 className="input-field"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
 
@@ -105,6 +109,10 @@ export default function Register() {
                                 type="email"
                                 placeholder="you@example.com"
                                 className="input-field"
+                                value={email}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                }}
                             />
                         </div>
 
@@ -116,12 +124,18 @@ export default function Register() {
                                 type="password"
                                 placeholder="enter password"
                                 className="input-field"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
 
                         <button
                             type="submit"
                             className="w-full rounded-xl bg-[#35AFA0] px-4 py-2 text-white transition hover:bg-teal-600"
+                            // onClick={(e) => {
+                            //     e.preventDefault();
+                            //     handleRegister(email, username, password);
+                            // }}
                         >
                             Register
                         </button>
