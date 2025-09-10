@@ -110,7 +110,7 @@ const PurchasePage = () => {
               <DialogTitle title="aaaa" />
               <div className="overflow-y-auto max-h-[90vh] bg-white rounded-xl">
                 <div className="p-4 sm:p-6 lg:p-8">
-                  {/* Main Product Section */}
+                  {/* Main Product Section ...old */}
                  {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12  ">
                     <div className="order-2 lg:order-1 ">
                       <ProductGallery images={productData.images} />

@@ -1,10 +1,11 @@
 "use client";
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
 import { Inter, Dosis } from "next/font/google";
-import "@fontsource/jersey-10";
+// import "@fontsource/jersey-10";
 import { useState } from "react";
-
+import Link from 'next/link';
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -20,6 +21,7 @@ export default function Header() {
 const [menuOpen, setMenuOpen] = useState(false);
 const [categoriesOpen, setCategoriesOpen] = useState(false);
 const [secrchisOpen, setSearchOpen] = useState(false);
+const pathname = usePathname();
 
 return (
     <>
@@ -30,10 +32,10 @@ return (
 
         {/* second part in header */}
         <div className="head-2 ">
-            <ul className={`flex gap-3 ${inter.className} max-md:hidden `}>
-                <li className='text-nowrap'>About Us</li>
-                <li>Compare</li>
-                <li>Wishlist</li>
+            <ul className={`flex gap-3 ${inter.className} max-md:hidden items-center`}>
+                <li className="menu-items text-nowrap"><Link href="/about" className={pathname === '/about' ? 'active' : '' }>About Us</Link></li>
+                <li className="menu-items"><Link href="" className={pathname === '/compare' ? 'active' : '' }>Compare</Link></li>
+                <li className="menu-items"><Link href="" className={pathname === '/wishlist' ? 'active' : '' }>Wishlist</Link></li>
             </ul>
             <div className="sec-help-lang">
                 <div className={`secure text-center pl-[15px] ${inter.className}`} >
@@ -65,11 +67,11 @@ return (
                     <Image src="/assets/logo.svg" alt='logo' width={50} height={50} className='inline w-8'/>
                     <p className="jersey text-[2rem] text-[var(--base-color)] relative bottom-1 max-md:text-[1.5rem] ">Basket</p>
                 </div>
-                <p className={`${inter.className} text-[0.6rem] text-[#3E445A] opacity-50 max-md:text-wrap max-md:text-[0.5rem]`} >Online Grocery Shopping Center</p>
+                <p className={`${inter.className} text-[0.6rem] text-[#3E445A] opacity-50 max-md:text-[0.5rem]`} >Online Grocery Shopping Center</p>
             </div>
             <div className="search-bar relative ">
                 <input type="search" className={`search-input ${inter.className}`} placeholder='Search for Products, fruit, meat, eggs .etc...'/>
-                <Image src="/assets/seach.svg" alt='search icon' height={20} width={30} className=' absolute right-[1rem] top-[17px] max-md:block'/>
+                <Image src="/assets/seach.svg" alt='search icon' height={20} width={20} className=' absolute right-[1rem] top-[17px] max-md:block'/>
             </div>
             <div className='user-and-cart flex items-center max-md:gap-4 '>
                 <button onClick={() => setSearchOpen(!secrchisOpen)}>
@@ -78,7 +80,7 @@ return (
                 <Image src='/assets/userIcon.svg' alt='profile logo' height={24} width={24} className='p-1 border border-gray-300 rounded-[50%] size-7 max-md:hidden ' />
                 <p className={`${dosis.className} font-medium text-[14px] mx-[20px] max-md:hidden`}>$0.00</p> 
                 <div className="cart relative ">
-                    <Image src="/assets/cartIcon.svg" alt='cart icon' height={40}  width={40} className='p-[10px] bg-[#FFF1EE] rounded-[50%] max-sm:w-[55px] ' />
+                    <Image src="/assets/cartIcon.svg" alt='cart icon' height={40}  width={40} className='p-[10px] bg-[#FFF1EE] rounded-[50%] max-sm:w-[47px] ' />
                     <div className={`badge ${inter.className} top-0 right-0`}>
                         <span>0</span>
                     </div>
@@ -108,6 +110,7 @@ return (
                     <Image src="/assets/menuIcon.svg" alt="menu icon" height={14} width={14} className="max-md:hidden" />
                     <span className={`category-btn-txt ${dosis.className}`}> All categories </span>
                     <Image src="/assets/dropArrow.svg" height={10} width={10} alt="drop arrow" className={`transition-transform duration-300 ${ categoriesOpen ? "rotate-180" : "rotate-0"}`} />
+                    
                 </button>
                 <span className={`total-product ${dosis.className} `}>total 50 Products</span>
 
@@ -129,30 +132,29 @@ return (
                 mx-10px text-[15px] 
                 items-center max-lg:gap-5
                 max-md:flex-wrap max-md:hidden`}>
-                <li className='flex gap-3 items-center bg-[#F0FAFF] px-[15px] py-[6px] rounded-[30px] '>
-                    <span className="text-[var(--base-color)]"> <a href="#">home</a> </span>
-                    {/* <Image src="/assets/dropArrowHome.svg" alt='drop arrow' width={10} height={10}/> */}
+                <li className='menu-items'>
+                    <Link href="/home" className={pathname === '/home' ? 'active' : '' }>Home</Link>
                 </li>
                 <li className='menu-items'>
-                    <a href="#">shop</a>
+                    <Link href="/shop" className={pathname === '/shop' ? 'active' : '' }>shop</Link>
                 </li>
-                <li className='menu-items menu-items-icons '>
+                <li className='menu-items menu-items-icons text-nowrap max-lg:text-[14px]'>
                     <Image src="/assets/meatIcon.svg" alt='meat icon' height={20} width={20}  />
-                    <a href="#" className='text-nowrap max-lg:text-[14px]'>meats & seafood</a>
+                    <Link href="#">meats & seafood</Link>
                 </li>
                 <li className='menu-items menu-items-icons '>
                     <Image src="/assets/bakeryIcon.svg" alt='bakeryIcon' height={20} width={20}  />
-                    <a href="#">bakery</a>
+                    <Link href="#">bakery</Link>
                 </li>
                 <li className='menu-items menu-items-icons'>
                     <Image src="/assets/bevarage.svg" alt='bevarage icon' height={20} width={20}  />
-                    <a href="#">bevrages</a>
+                    <Link href="#">bevrages</Link>
                 </li>
                 <li className='menu-items'>
-                    <a href="#">blog</a>
+                    <Link href="blog/" className={pathname === '/blog' ? 'active' : '' }>blog</Link>
                 </li>
                 <li className='menu-items'>
-                    <a href="#">contact</a>
+                    <Link href="/contact" className={pathname === '/contact' ? 'active' : '' }>contact</Link>
                 </li>
                 
             </ul>
@@ -187,20 +189,16 @@ return (
                 </li>
 
                 {/* Rest of your menu items */}
-                <li className="bg-[#F0FAFF] px-[15px] py-[6px] rounded-[30px]">
-                    <a href="#" className="text-[var(--base-color)]">
-                        home
-                    </a>
-                </li>
-                <li className="menu-items"><a href="#">shop</a></li>
-                <li className="menu-items"><a href="#">meats & seafood</a></li>
-                <li className="menu-items"><a href="#">bakery</a></li>
-                <li className="menu-items"><a href="#">beverages</a></li>
-                <li className="menu-items"><a href="#">blog</a></li>
-                <li className="menu-items"><a href="#">contact</a></li>
-                <li className="menu-items"><a href="#">About Us</a></li>
-                <li className="menu-items"><a href="#">compare</a></li>
-                <li className="menu-items"><a href="#">wishlist</a></li>
+                <li><Link href="/home" className={pathname === '/home' ? 'active' : '' }>home</Link></li>
+                <li className="menu-items"><Link href="#" >meats & seafood</Link></li>
+                <li className="menu-items"><Link href="#">bakery</Link></li>
+                <li className="menu-items"><Link href="#">beverages</Link></li>
+                <li className="menu-items"><Link href="/blog" className={pathname === '/blog' ? 'active' : '' }>blog</Link></li>
+                <li className="menu-items"><Link href="/contact" className={pathname === '/contact' ? 'active' : '' }>contact</Link></li>
+                <li className="menu-items"><Link href="/about" className={pathname === '/about' ? 'active' : '' }>About Us</Link></li>
+                <li className="menu-items"><Link href="#" >compare</Link></li>
+                <li className="menu-items"><Link href="#" className={pathname === '/wishlist' ? 'active' : '' }>wishlist</Link></li>
+                <li className="menu-items"><Link href="#" className={pathname === '/shop' ? 'active' : '' }>shop</Link></li>
             </ul>
         </div>
         {/* End fourth part category and menu */}

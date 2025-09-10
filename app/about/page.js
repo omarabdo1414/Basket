@@ -1,5 +1,6 @@
 import React from 'react'
-import Image from 'next/image';
+import Image from 'next/image'
+
 export default function About() {
   return (
     <>
@@ -50,10 +51,10 @@ export default function About() {
             <div className="flex justify-center">
               <Image
                 src="/assets/about-people.jpg.png"
-                alt="CEO"
+                alt="CEO" 
+                width={550} 
+                height={100}
                 className="max-h-[600px] object-cover rounded-md"
-                width={600}
-                height={500}
               />
             </div>
             <div>

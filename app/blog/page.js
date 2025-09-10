@@ -1,12 +1,6 @@
-import React from "react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaReddit,
-  FaPinterest,
-} from "react-icons/fa";
-import Image from "next/image";
+import React from 'react';
+import { FaFacebookF, FaInstagram, FaTwitter, FaReddit, FaPinterest } from "react-icons/fa";
+import Image from 'next/image';
 
 export default function Blog() {
   return (
