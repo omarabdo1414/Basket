@@ -1,4 +1,3 @@
-
 import { Geist, Geist_Mono, Jersey_10 } from "next/font/google";
 import "./globals.css";
 import { Dosis, Inter } from "next/font/google";
@@ -9,16 +8,15 @@ import Footer from "./components/Footer";
 // Cart Context Provider
 import { CartProvider } from "./contexts/cartContext";
 
- const dosis = Dosis({
-   subsets: ["latin"],
-   variable: "--font-dosis", 
- });
+const dosis = Dosis({
+  subsets: ["latin"],
+  variable: "--font-dosis",
+});
 
- const inter = Inter({
-   subsets: ["latin"],
-   variable: "--font-inter",
- });
-
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,17 +42,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${dosis.variable} ${inter.variable}`}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${jersey.variable} antialiased`}
-      >
-        <Header />
-        <main>
-            <CartProvider>
-                {children}
-            </CartProvider>
-        </main>
-        <Footer />
-      </body>
+      <CartProvider>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${jersey.variable} antialiased`}
+        >
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </body>
+      </CartProvider>
     </html>
   );
 }

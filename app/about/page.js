@@ -53,6 +53,7 @@ export default function About() {
                 src="/assets/about-people.jpg.png"
                 alt="CEO" width={550} height={100}
                 className="max-h-[600px] object-cover rounded-md"
+                
               />
             </div>
             <div>
@@ -85,7 +86,7 @@ export default function About() {
           <div className="
             relative 
             mt-[-4rem]
-            md:mt-[-100px]
+            md:mt-[-98px]
             md:w-[80%] 
             md:ml-32
           ">
