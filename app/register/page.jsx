@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { supabase } from "../../lib/supabaseClient";
+import { supabaseAuth } from "../../lib/supabaseAuthClient";
 import { useRouter } from "next/navigation";
 
 export default function Register() {
@@ -18,7 +18,7 @@ export default function Register() {
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supabaseAuth.auth.signUp({
         email,
         password,
         options: {

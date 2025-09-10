@@ -15,11 +15,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { StarIcon } from "@heroicons/react/24/solid";
-import { useRef } from "react";
+import { useRef ,useEffect ,useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/navigation";
-import { supabase } from "../../lib/supabaseClient"
+import { supabaseAuth } from "../../lib/supabaseAuthClient";
+import { supabaseProducts } from "../../lib/supabaseProductsClient";
+
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,148 +46,148 @@ export default function Home() {
     }
   };
 
-  const products = [
-    {
-      id: 1,
-      name: "Yogurt",
-      price: 3.29,
-      oldPrice: 8.29,
-      stock: 17,
-      discount: "60%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 2,
-      name: "Milk",
-      price: 2.5,
-      oldPrice: 5.0,
-      stock: 20,
-      discount: "50%",
-      img: Image1,
-      rating: 4,
-    },
-    {
-      id: 3,
-      name: "Cheese",
-      price: 4.0,
-      oldPrice: 7.0,
-      stock: 10,
-      discount: "40%",
-      img: Image1,
-      rating: 3,
-    },
-    {
-      id: 4,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 5,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 6,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 7,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 8,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 9,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 10,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 11,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 12,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 13,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-    {
-      id: 14,
-      name: "Butter",
-      price: 6.0,
-      oldPrice: 9.0,
-      stock: 8,
-      discount: "30%",
-      img: Image1,
-      rating: 5,
-    },
-  ];
+  // const products = [
+  //   {
+  //     id: 1,
+  //     name: "Yogurt",
+  //     price: 3.29,
+  //     oldPrice: 8.29,
+  //     stock: 17,
+  //     discount: "60%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Milk",
+  //     price: 2.5,
+  //     oldPrice: 5.0,
+  //     stock: 20,
+  //     discount: "50%",
+  //     img: Image1,
+  //     rating: 4,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Cheese",
+  //     price: 4.0,
+  //     oldPrice: 7.0,
+  //     stock: 10,
+  //     discount: "40%",
+  //     img: Image1,
+  //     rating: 3,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 7,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 8,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 9,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 10,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 11,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 12,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 13,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  //   {
+  //     id: 14,
+  //     name: "Butter",
+  //     price: 6.0,
+  //     oldPrice: 9.0,
+  //     stock: 8,
+  //     discount: "30%",
+  //     img: Image1,
+  //     rating: 5,
+  //   },
+  // ];
   const categories = [
     { id: 1, name: "Beverages", count: 1, img: Image1 },
     { id: 2, name: "Snacks", count: 2, img: Image1 },
@@ -197,11 +200,13 @@ export default function Home() {
     { id: 9, name: "Vegetables", count: 99, img: Image1 },
   ];
 
+  const [products, setProducts] = useState([]);
+  // const [categories, setCategories] = useState([]);
 
   const router = useRouter();
 
   const AddToCart = async (product) => {
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await supabaseAuth.auth.getSession();
 
     if (!session) {
       router.push("/register");
@@ -214,7 +219,37 @@ export default function Home() {
     alert('Added to cart');
   };
   
-  
+   useEffect(() => {
+    const fetchProducts = async () => {
+      const { data, error } = await supabaseProducts
+        .from("products")
+        .select("*"); 
+
+      if (error) {
+        console.error("Error fetching products:", error.message);
+      } else {
+        setProducts(data);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  // useEffect(() => {
+  //   const fetchCategories= async () => {
+  //     const { data, error } = await supabaseProducts
+  //       .from("categories")
+  //       .select("*"); 
+
+  //     if (error) {
+  //       console.error("Error fetching categores:", error.message);
+  //     } else {
+  //       setCategories(data);
+  //     }
+  //   };
+
+  //   fetchCategories();
+  // }, []);
 
   return (
 
@@ -365,30 +400,31 @@ export default function Home() {
                 className="relative min-w-[50%] max-w-[50%] lg:min-w-[20%] lg:max-w-[20%] px-6 space-y-1 border-r-2 border-[#EDEEF5] flex flex-col justify-center py-4 snap-start"
               >
                 <Image
-                  src={product.img}
-                  alt={product.name}
+                  src={product.img_url}
+                  alt={product.title}
                   className="w-full h-full"
+                  width={200} height={10}
                 />
-                <h4 className="text-sm font-semibold">{product.name}</h4>
+                <h4 className="text-sm font-semibold">{product.title}</h4>
                 <p className="text-[#00B853] uppercase font-semibold text-sm">
-                  {product.stock} In stock
+                  {product.is_stoke} In stock
                 </p>
                 <div className="flex items-center gap-1 text-yellow-500">
-                  ⭐ {product.rating}
+                  ⭐ {product.stars}
                   <span className="text-[#71778E] font-semibold ml-2 text-sm">
                     <p>review</p>
                   </span>
                 </div>
                 <div>
                   <span className="text-[#C2C2D3] line-through font-semibold">
-                    ${product.oldPrice}
+                    ${product.price}
                   </span>{" "}
                   <span className="text-[#D51243] font-semibold">
-                    ${product.price}
+                    ${product.price_after_sale}
                   </span>
                 </div>
                 <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
-                  {product.discount}
+                  50%
                 </p>
                 <button className="text-[#35AFA0] border rounded-2xl py-0.5 mt-2 border-[#35AFA0] px-2 cursor-pointer" onClick={()=>{AddToCart(product)}}>
                   Add to cart
@@ -478,12 +514,12 @@ export default function Home() {
                 key={product.id}
                 className="relative px-4 border-1 border-[#EDEEF5]  flex flex-col justify-center pb-2 lg:pb-0 "
               >
-                <Image src={Image1} alt="anything" />
+                <Image src={product.img_url} alt="anything" width={150} height={150}/>
                 <h4 className="vegetables-section text-sm font-semibold">
-                  Chobani Complete Vanilla Greek Yogurt
+                  {product.title}
                 </h4>
                 <p className="text-[#00B853] uppercase font-semibold text-sm">
-                  <span>17 </span>In stock
+                  <span>{product.amount_in_stoke} </span>In stock
                 </p>
                 <div className="flex items-center">
                   {" "}
@@ -498,9 +534,9 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="text-[#C2C2D3] line-through font-semibold">
-                    $8.29
+                    {product.price}
                   </span>{" "}
-                  <span className="text-[#D51243]  font-semibold">$3.29</span>
+                  <span className="text-[#D51243]  font-semibold">{product.price_after_sale}</span>
                 </div>
                 <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
                   60%
@@ -570,30 +606,26 @@ export default function Home() {
                 View All
               </Link>
             </div>{" "}
-            <ul className="grid lg:grid-cols-2 home-page p-5 space-y-1 md:mb-20">
-              <li className="text-[#3E445A]">Beverages</li>
-              <li className="text-[#3E445A]">Breads & Bakery</li>
-              <li className="text-[#3E445A]">Breads & Bakery</li>
-              <li className="text-[#3E445A]">Breads & Bakery</li>
-              <li className="text-[#3E445A]">Breads & Bakery</li>
-              <li className="text-[#3E445A]">Breads & Bakery</li>
-              <li className="text-[#3E445A]">Breads & Bakery</li>
-              <li className="text-[#3E445A]">Breads & Bakery</li>
-              <li className="text-[#3E445A]">Breads & Bakery</li>
+            <ul className="grid lg:grid-cols-2 home-page px-5 py-1 md:mb-20">
+              {products.map((prod)=>(
+                <li className="text-[#3E445A]" key={prod.id}>{prod.title}</li>
+              )
+              )
+              }
             </ul>
-            <p className="flex pl-5 text-[#233A95] items-center lg:mb-4 font-semibold">
+            <p className="flex pl-4 -mt-10 text-[#233A95] items-center lg:mb-4 font-semibold">
               View All <ArrowRightIcon className="w-4 h-4" />
             </p>
           </div>
           <div className="h-page col-span-2 lg:col-span-4 grid grid-cols-2 lg:grid-cols-4">
             {products.slice(0, 8).map((product) => (
               <div className="relative px-4 border-1  border-[#EDEEF5] flex flex-col justify-center" key={product.id}>
-                <Image src={Image1} alt="anything" />
+                <Image src={product.img_url} alt="anything" width={300} height={100} />
                 <h4 className="vegetables-section text-sm font-semibold">
-                  Chobani Complete Vanilla Greek Yogurt
+                  {product.title}
                 </h4>
                 <p className="text-[#00B853] uppercase font-semibold text-sm">
-                  In stock
+                  {product.amount_in_stoke} In stock
                 </p>
                 <div className="flex items-center">
                   {" "}
@@ -608,9 +640,9 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="text-[#C2C2D3] line-through font-semibold">
-                    $8.29
+                    {product.price}
                   </span>{" "}
-                  <span className="text-[#D51243]  font-semibold">$3.29</span>
+                  <span className="text-[#D51243]  font-semibold">{product.price_after_sale}</span>
                 </div>
                 <p className="bg-[#35AFA0] text-white font-semibold w-fit rounded-lg px-1 text-sm absolute top-5 left-4">
                   60%
@@ -692,9 +724,9 @@ export default function Home() {
                 key={cat.id}
                 className=" flex   items-center border-1  border-[#EDEEF5] pr-3"
               >
-                <Image src={Image1} alt="anything" />
+                <Image src={cat.img} alt="anything" width={300} height={100} />
                 <div className="">
-                  <p>Beverages</p>
+                  <p>{cat.title}</p>
                   <p>{cat.count} items</p>
                 </div>
               </div>

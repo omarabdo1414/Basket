@@ -8,7 +8,7 @@ import { useState , useEffect } from "react";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
-import { supabase } from "../../lib/supabaseClient";
+import { supabaseAuth } from "../../lib/supabaseAuthClient";
 
 
 const inter = Inter({
@@ -32,13 +32,13 @@ const [session, setSession] = useState(null);
 
 useEffect(() => {
     const getSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const { data: { session } } = await supabaseAuth.auth.getSession();
       setSession(session);
     };
     getSession();
 
     // also listen for login/logout events
-    const { data: authListener } = supabase.auth.onAuthStateChange(
+    const { data: authListener } = supabaseAuth.auth.onAuthStateChange(
       (_event, session) => {
         setSession(session);
       }
@@ -50,7 +50,7 @@ useEffect(() => {
   }, []);
 
   const logOut = async () => {
-    await supabase.auth.signOut();
+    await supabaseAuth.auth.signOut();
     router.push("/login");
   };
 
@@ -177,7 +177,7 @@ return (
                     <Link href="/" className={pathname === '/' ? 'active' : '' }>Home</Link>
                 </li>
                 <li className='menu-items'>
-                    <Link href="/shop" className={pathname === '/shop' ? 'active' : '' }>shop</Link>
+                    <Link href="/purchase" className={pathname === '/purchase' ? 'active' : '' }>shop</Link>
                 </li>
                 <li className='menu-items menu-items-icons text-nowrap max-lg:text-[14px]'>
                     <Image src="/assets/meatIcon.svg" alt='meat icon' height={20} width={20}  />
@@ -239,7 +239,7 @@ return (
                 <li className="menu-items"><Link href="/about" className={pathname === '/about' ? 'active' : '' }>About Us</Link></li>
                 <li className="menu-items"><Link href="#" >compare</Link></li>
                 <li className="menu-items"><Link href="#" className={pathname === '/wishlist' ? 'active' : '' }>wishlist</Link></li>
-                <li className="menu-items"><Link href="#" className={pathname === '/shop' ? 'active' : '' }>shop</Link></li>
+                <li className="menu-items"><Link href="purchase" className={pathname === '/purchase' ? 'active' : '' }>shop</Link></li>
             </ul>
         </div>
         {/* End fourth part category and menu */}

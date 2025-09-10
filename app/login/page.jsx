@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react"
-import { supabase } from "../../lib/supabaseClient"
+import { supabaseAuth } from "../../lib/supabaseAuthClient"
 import { useRouter } from "next/navigation";
 
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
     
     const handleLogin = async (e) => {
         e.preventDefault()
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+        const { data, error } = await supabaseAuth.auth.signInWithPassword({ email, password })
 
         if (error) {
         setMessage(error.message);
