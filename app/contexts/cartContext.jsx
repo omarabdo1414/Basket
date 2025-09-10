@@ -107,15 +107,6 @@ export function CartProvider({ children }) {
         localStorage.setItem("cart", JSON.stringify(cart));
     };
 
-    const clearCart = () => {
-        setCart([]);
-        localStorage.removeItem("cart");
-    };
-
-    const clearCart = () => {
-        setCart([]);
-    };
-
     return (
         <CartContext.Provider
             value={{
@@ -124,7 +115,6 @@ export function CartProvider({ children }) {
                 addToCart,
                 removeFromCart,
                 updateQuantity,
-                clearCart,
             }}
         >
 
