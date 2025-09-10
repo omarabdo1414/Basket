@@ -11,10 +11,6 @@ const Cart = () => {
     const shipping = 0;
     const total = subtotal + shipping;
 
-    const subtotal = cart.reduce((acc, item) => acc + item.price * item.count, 0);
-    const shipping = 0;
-    const total = subtotal + shipping;
-
     return (
         <div className="flex flex-col space-y-4">
             <div className="flex justify-between items-center">
