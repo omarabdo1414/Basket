@@ -1,8 +1,44 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react"
+import { supabase } from "../../lib/supabaseClient"
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+    
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+    const [isError, setIsError] = useState(false);
+    const router = useRouter();
+
+
+    const handleRegister = async (e) => {
+        e.preventDefault()
+        const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+            data: {
+            username: username,
+            },
+        },
+        })
+        if (error) {
+            setMessage("Please enter available data");
+            setIsError(true);
+        }
+        else{
+            setMessage("Check your email for confirmation link!");
+            setIsError(false);
+
+            setTimeout(() => {
+                router.push("/login");
+            }, 500);
+        } 
+    }
     return (
         <>
             {/* Register Form and logo */}
@@ -85,7 +121,7 @@ export default function Register() {
                     </div>
 
                     {/* Form */}
-                    <form className="space-y-4 xs:px-4 lg:px-0">
+                    <form className="space-y-4 xs:px-4 lg:px-0" onSubmit={handleRegister}>
                         <div>
                             <label className="mb-1 block text-sm font-medium text-gray-700">
                                 Full Name
@@ -94,6 +130,8 @@ export default function Register() {
                                 type="text"
                                 placeholder="John Doe"
                                 className="input-field"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
 
@@ -105,6 +143,8 @@ export default function Register() {
                                 type="email"
                                 placeholder="you@example.com"
                                 className="input-field"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
 
@@ -116,11 +156,14 @@ export default function Register() {
                                 type="password"
                                 placeholder="enter password"
                                 className="input-field"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
-
+                        <p className={`message ${isError ? "text-red-500" : "text-green-500"}`}>
+                            {message}
+                        </p>
                         <button
-                            type="submit"
                             className="w-full rounded-xl bg-[#35AFA0] px-4 py-2 text-white transition hover:bg-teal-600"
                         >
                             Register
