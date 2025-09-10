@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { FaFacebookF, FaInstagram, FaTwitter, FaReddit, FaPinterest } from "react-icons/fa";
 import Image from 'next/image';
-
 
 export default function Blog() {
   return (
@@ -39,7 +37,6 @@ export default function Blog() {
           {/* Blog Post 2 */}
           <div>
             <Image
-
               width={800}
               height={400}
               src="/assets/blog-5.jpg.png"

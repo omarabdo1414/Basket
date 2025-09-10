@@ -29,14 +29,14 @@ const CartItem = ({ item }) => {
                 className="flex items-center justify-between border-b pb-3 border border-gray-300 p-4 rounded-[12px]">
                 <div className="flex items-center gap-3 relative">
                     <Image
-                        src={item.image}
-                        alt={item.name}
+                        src={item.imgURL}
+                        alt={item.title}
                         width={100}
                         height={100}
                         className="rounded-md"
                     />
                     <div className="flex flex-col pl-10">
-                        <span className="text-lg font-bold">{item.name}</span>
+                        <span className="text-lg font-bold">{item.title}</span>
                         <p className="text-xs text-gray-500 text[20px]">{item.description}</p>
                         <div className="flex items-center gap-2 mt-2 pt-3">
                             <button
@@ -47,7 +47,7 @@ const CartItem = ({ item }) => {
                             </button>
                             <div className="w-[50px] h-[50px] bg-gray-200 rounded-[50%] flex items-center justify-center">
                                 <span className="text-lg text-gray-900 px-[6px] mx-3 text-center">
-                                    {item.count}
+                                    {item.amount_in_stoke}
                                 </span>
                             </div>
                             <button
@@ -60,7 +60,7 @@ const CartItem = ({ item }) => {
                     </div>
                 </div>
                 <span className="text-sm font-medium">
-                    ${(item.price * item.count).toFixed(2)}
+                    ${(item.price * item.amount_in_stoke).toFixed(2)}
                 </span>
             </div>
         </div>

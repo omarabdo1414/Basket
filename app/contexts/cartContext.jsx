@@ -1,10 +1,36 @@
 "use client";
-import { useEffect } from "react";
-import { createContext, useContext, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
+import supabase from "../lib/subabase-client";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
+    const [products, setProducts] = useState([]); // fetched from DB
+    const [cart, setCart] = useState([]);
+
+
+    // Fetch products from Supabase on mount
+    useEffect(() => {
+        const fetchProducts = async () => {
+            let { data, error } = await supabase.from("products").select("*");
+            if (error) {
+                console.error("Error fetching products:", error);
+            } else {
+                console.log("Fetched products:", data);
+                setProducts(data);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    // Load cart from localStorage
+    useEffect(() => {
+        const storedCart = localStorage.getItem("cart");
+        if (storedCart) {
+            setCart(JSON.parse(storedCart));
+        }
+    }, []);
 
     const items = [
         {
@@ -33,7 +59,11 @@ export function CartProvider({ children }) {
         },
     ];
 
-    const [cart, setCart] = useState(items);
+
+    // Sync cart to localStorage
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
     // add the cart to the local storage
     useEffect(() => {
@@ -46,6 +76,7 @@ export function CartProvider({ children }) {
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
+
 
     const addToCart = (item) => {
         setCart((prev) => {
@@ -81,14 +112,22 @@ export function CartProvider({ children }) {
         localStorage.removeItem("cart");
     };
 
+    const clearCart = () => {
+        setCart([]);
+    };
+
     return (
-        <CartContext.Provider value={{ 
-            cart,
-            addToCart, 
-            removeFromCart, 
-            updateQuantity, 
-            clearCart 
-        }}>
+        <CartContext.Provider
+            value={{
+                products, // fetched products from DB
+                cart,
+                addToCart,
+                removeFromCart,
+                updateQuantity,
+                clearCart,
+            }}
+        >
+
             {children}
         </CartContext.Provider>
     );
@@ -96,8 +135,9 @@ export function CartProvider({ children }) {
 
 export const useCart = () => {
     const context = useContext(CartContext);
+    console.log(context);
     if (!context) {
-        throw new Error('useCart must be used within a CartProvider');
+        throw new Error("useCart must be used within a CartProvider");
     }
     return context;
-}
+};

@@ -228,7 +228,7 @@ export default function Home() {
               </p>
               <Link
                 href="/shop"
-                className="bg-[#35AFA0] mt-2 flex w-fit items-center justify-center rounded-4xl text-white mt-2 py-2 px-4 text-sm"
+                className="bg-[#35AFA0] mt-2 flex w-fit items-center justify-center rounded-4xl text-white py-2 px-4 text-sm"
               >
                 <span> Shop Now</span>{" "}
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
@@ -564,7 +564,7 @@ export default function Home() {
           </div>
           <div className="h-page col-span-2 lg:col-span-4 grid grid-cols-2 lg:grid-cols-4">
             {products.slice(0, 8).map((product) => (
-              <div className="relative px-4 border-1  border-[#EDEEF5] flex flex-col justify-center   ">
+              <div className="relative px-4 border-1  border-[#EDEEF5] flex flex-col justify-center" key={product.id}>
                 <Image src={Image1} alt="anything" />
                 <h4 className="vegetables-section text-sm font-semibold">
                   Chobani Complete Vanilla Greek Yogurt

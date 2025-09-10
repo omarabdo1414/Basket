@@ -51,9 +51,10 @@ export default function About() {
             <div className="flex justify-center">
               <Image
                 src="/assets/about-people.jpg.png"
-                alt="CEO" width={550} height={100}
+                alt="CEO" 
+                width={550} 
+                height={100}
                 className="max-h-[600px] object-cover rounded-md"
-                
               />
             </div>
             <div>

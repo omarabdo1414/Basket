@@ -58,7 +58,6 @@
 }
 /* End fourth part of header */
 
-
 /* part 1 in footer  */
 .footer-up{
   @apply bg-[var(--base-color)] w-full py-[40px] flex relative ;
@@ -105,7 +104,17 @@
 }
 /* End part3:last  */
 
-
+/* home page */
+.home-page p.discount , .home-page h2 ,.h-page p{
+  font-family: "Dosis";
+}
+.home-page h3, .home-page li, .h-page h4, .home-first{
+  font-family: "Inter";
+}
+.vegetables-section{
+  color:#202435
+}
+/* home page */
 
 @theme inline {
   --color-background: var(--background);
@@ -241,6 +250,8 @@
   margin-top: 8px;
 }
 
+.login-form {
+  @apply text-[blue] bg-[lightgray] text-center m-auto p-5 w-[50%] rounded-lg;
 .input-field {
     @apply 
     w-full 
@@ -251,14 +262,18 @@
     placeholder:text-gray-400
     ;
   }
-  
-@layer {
-  .login-form {
-    @apply text-[blue] bg-[lightgray] text-center m-auto p-5 w-[50%] rounded-lg;
-  }
-
-  
 }
+
+.input-field {
+  @apply 
+  w-full 
+  rounded-[6px] border
+  border-gray-300 
+  text-gray-900
+  px-3 py-2 text-sm focus:border-[#35AFA0] focus:outline-none focus:ring-1 focus:ring-[#35AFA0]
+  placeholder:text-gray-400;
+}
+
 
 /* Ending Login and Register */
 
