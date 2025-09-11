@@ -8,7 +8,7 @@ import Image5 from "../../public/assets/category-banner-2.jpg.png";
 import Image6 from "../../public/assets/category-banner-1.jpg.png";
 import Image7 from "../../public/assets/banner-box2.jpg.png";
 import Image8 from "../../public/assets/slider-image-8.jpg.png";
-import Image9 from "../../public/assets/sidebar-banner.gif.png";
+import Image9 from "../../public/assets/sidebar-banner.png";
 import Image10 from "../../public/assets/home-banner-15.jpg.png";
 import Image11 from "../../public/assets/home-banner-16.jpg.png";
 import Image from "next/image";
