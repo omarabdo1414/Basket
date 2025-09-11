@@ -219,7 +219,7 @@ return (
                     </div>
 
                     {/* Dropdown list */}
-                    <ul className={`flex flex-col absolute z-10 order-1 gap-2 text-left mt-2 pl-6 transition-all duration-300 overflow-hidden ${categoriesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+                    <ul className={`flex flex-col order-1 gap-2 text-left mt-2 pl-6 transition-all duration-300 overflow-hidden ${categoriesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
                         <li className="menu-items"><a href="#">Fruits</a></li>
                         <li className="menu-items"><a href="#">Vegetables</a></li>
                         <li className="menu-items"><a href="#">Meats</a></li>
